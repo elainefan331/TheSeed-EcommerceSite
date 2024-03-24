@@ -4,15 +4,19 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+    <div className="header">
+      
+        <NavLink to="/">
+          <div style={{color: 'rgb(62, 188, 142)', fontSize: "25px"}}>
+            <i className="fa-brands fa-pagelines">The Seed</i>
+          </div>
+        </NavLink>
+      
 
-      <li>
+      
         <ProfileButton />
-      </li>
-    </ul>
+      
+    </div>
   );
 }
 
