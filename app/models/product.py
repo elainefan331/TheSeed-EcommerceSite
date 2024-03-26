@@ -39,9 +39,11 @@ class Product(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'description': self.description,
             'image': self.image,
+            'price': self.price,
             'user': self.user,
             'reviews': self.reviews,
             'created_at': self.created_at,
-            'updated_at': self.updated_at,
+            'updated_at': self.updated_at
         }

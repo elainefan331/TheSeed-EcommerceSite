@@ -22,6 +22,7 @@ class Review(db.Model):
     def product(self):
         return {
             'id': self.product_in_review.id,
+            'user_id': self.product_in_review.user_id,
             'name': self.product_in_review.name,
             'description': self.product_in_review.description,
             'image': self.product_in_review.image,
@@ -44,7 +45,10 @@ class Review(db.Model):
         return {
             'id': self.id,
             'user': self.user,
-            'product': self.product,
+            'user_id': self.user_id,
+            'product_id': self.product_id,
             'review': self.review,
-            'rating': self.rating
+            'rating': self.rating,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
