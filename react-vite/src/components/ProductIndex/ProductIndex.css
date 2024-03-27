@@ -1,0 +1,15 @@
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0;
+    row-gap: 1vw;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+.product-item-card-navlink {
+    text-decoration: none;
+}
+

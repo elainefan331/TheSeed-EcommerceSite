@@ -28,7 +28,24 @@ def product_detail(id):
     product = Product.query.get(id)
     if not product:
         return {"message": "This product could not be found"}, 404
-    return product.to_dict()
+    product_dict = product.to_dict()
+    reviews_list = product_dict["reviews"]
+    num_reviews = len(reviews_list)
+    rating_sum = 0
+    for review in reviews_list:
+        rating_sum += review["rating"]
+    if num_reviews > 0:
+        avg = rating_sum / num_reviews
+        avg_rating = round(avg, 1)
+    
+    if num_reviews == 0:
+        avg_rating = 0
+        
+    product_dict["avg_rating"] = avg_rating 
+    product_dict["num_reviews"] = num_reviews
+    print("product_dict===========", product_dict)
+    return product_dict
+    # return product.to_dict()
 
 
 # create a product
