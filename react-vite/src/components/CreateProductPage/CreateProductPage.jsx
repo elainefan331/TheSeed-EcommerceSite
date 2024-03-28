@@ -32,7 +32,7 @@ function CreateProductPage() {
         }
 
         if(!image) {
-            validationObj.image = "Image is required(accept pdf, png, jpg, jpeg, gif)"
+            validationObj.image = "Image is required (accept pdf, png, jpg, jpeg, gif)"
         } else {
             const fileType = image.type
             // console.log("file type=====================>", fileType)
@@ -64,54 +64,66 @@ function CreateProductPage() {
 
     return (
         <div>
-            <h1>Create a new product</h1>
+            <div className="create-product-title">
+                <h1>Create a new product</h1>
+            </div>
             <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
-                // className="form-data"
             >
-                <label>
-                    Name
-                    <input 
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    />
-                    <div>{errors.name && <p className="create-product-validator">{errors.name}</p>}</div>
-                </label>
+                <div className="create-product-form-container">
+                    <div className="create-product-input-container">
+                        <label>
+                            Name
+                        </label>
+                            <input 
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            />
+                            <div>{errors.name && <p className="create-product-validator">{errors.name}</p>}</div>
+                    </div>
 
-                <label>
-                    Description
-                    <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    />
-                    <div>{errors.description && <p className="create-product-validator">{errors.description}</p>}</div>
-                </label>
+                    <div className="create-product-input-container">
+                        <label>
+                            Description
+                        </label>
+                            <textarea
+                            className="create-product-textarea"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            />
+                            <div>{errors.description && <p className="create-product-validator">{errors.description}</p>}</div>
+                    </div>
 
-                <label>
-                    Price $
-                    <input 
-                    type="number" step='1'
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    />
-                    <div>{errors.price && <p className="create-product-validator">{errors.price}</p>}</div>
-                </label>
+                    <div className="create-product-input-container">
+                        <label>
+                            Price $
+                        </label>
+                            <input 
+                            type="number" step='1'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            />
+                            <div>{errors.price && <p className="create-product-validator">{errors.price}</p>}</div>
+                    </div>
 
-                <label>
-                    Image
-                    <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setImage(e.target.files[0])}
-                    />
-                    <div>{errors.image && <p className="create-product-validator">{errors.image}</p>}</div>
-                    <div>{errors.imagetype && <p className="create-product-validator">{errors.imagetype}</p>}</div>
-                </label>
+                    <div className="create-product-input-container">
+                        <label>
+                            Image
+                        </label>
+                            <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
+                            />
+                            <div>{errors.image && <p className="create-product-validator">{errors.image}</p>}</div>
+                            <div>{errors.imagetype && <p className="create-product-validator">{errors.imagetype}</p>}</div>
+                    </div>
 
-                <button type="submit">Submit</button>
-                {(imageLoading) && <p>Loading...</p>}
+                    <button className="create-product-submit-button" type="submit">Submit</button>
+                    {(imageLoading) && <p>Loading...</p>}
+                </div>
             </form>
         </div>
     )

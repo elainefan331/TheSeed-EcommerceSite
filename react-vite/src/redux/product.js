@@ -1,6 +1,7 @@
 const GET_ALL_PRODUCTS = 'product/getAllProducts';
 const GET_SINGLE_PRODUCT = 'product/getSingleProduct';
 const UPDATE_PRODUCT = 'product/updateProduct';
+const DELETE_PRODUCT = 'product/deleteProduct';
 
 
 
@@ -23,6 +24,13 @@ const updateProductAction = (product) => {
     return {
         type: UPDATE_PRODUCT,
         payload: product
+    }
+}
+
+const deleteProductAction = (productId) => {
+    return {
+        type: DELETE_PRODUCT,
+        payload: productId
     }
 }
 
@@ -87,6 +95,17 @@ export const updateProductThunk = (formData, productId) => async (dispatch) => {
     }
 }
 
+// delete a product by product's id
+export const deleteProductThunk = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if(response.ok) {
+        dispatch(deleteProductAction(productId))
+    }
+}
+
 
 
 
@@ -105,6 +124,11 @@ const productReducer = (state = initialState, action) => {
         }
         case UPDATE_PRODUCT: {
             return {...state, Products: {...state.Products, [action.payload.id]: action.payload}}
+        }
+        case DELETE_PRODUCT: {
+            const newState = { ...state };
+            delete newState.Products[action.payload];
+            return newState
         }
         default:
             return state;

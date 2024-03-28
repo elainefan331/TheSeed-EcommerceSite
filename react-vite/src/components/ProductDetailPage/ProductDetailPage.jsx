@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getSingleProductThunk } from "../../redux/product";
 import { useModal } from "../../context/Modal";
 import DeleteReviewModal from "../DeleteReviewModal";
+import CreateReviewModal from "../CreateReviewModal";
 import "./ProductDetailPage.css"
 
 
@@ -37,6 +38,10 @@ function ProductDetailPage() {
         setModalContent(<DeleteReviewModal reviewId={reviewId} />)
     }
 
+    const handlePostClick = (productId) => {
+        setModalContent(<CreateReviewModal productId={productId}/>)
+    }
+
     return (
         <div className="product-show-page-container">
             <div className="product-details-container">
@@ -58,7 +63,7 @@ function ProductDetailPage() {
                 </div>
 
                 <div className="post-your-review-container">
-                    {ishidden()? null : (<button>Post Your Review</button>)}
+                    {ishidden()? null : (<button onClick={() => handlePostClick(productId)}>Post Your Review</button>)}
 
                 </div>
 

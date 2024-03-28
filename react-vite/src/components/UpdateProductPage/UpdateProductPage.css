@@ -1,0 +1,35 @@
+.update-product-title {
+    text-align: center;
+    color: rgb(83, 83, 83);
+    /* border:red solid 2px; */
+}
+
+.update-product-form-container {
+    display: grid;
+    width: 400px;
+    text-align: start;
+    margin: auto;
+    /* border: green solid 2px; */
+}
+
+.update-product-input-container {
+    display: grid;
+    gap: 2px;
+    width: 400px;
+    text-align: start;
+    margin-bottom: 2vw;
+    color: rgb(83, 83, 83);
+    /* border: red solid 2px; */
+}
+
+.update-product-submit-button {
+    padding: 8px 10px;
+    background-color: rgb(62, 188, 142);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+.update-product-textarea {
+    height: 130px;
+}
