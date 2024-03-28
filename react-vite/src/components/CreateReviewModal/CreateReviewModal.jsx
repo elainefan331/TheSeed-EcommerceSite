@@ -2,6 +2,7 @@ import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import StarsRatingInput from "../StarsRatingInput";
+import { createReviewThunk } from "../../redux/reviews";
 
 function CreateReviewModal({productId}) {
     const { closeModal } = useModal();
@@ -9,6 +10,14 @@ function CreateReviewModal({productId}) {
     const [review, setReview] = useState("")
     const [rating, setRating] = useState(null)
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("review", review);
+        formData.append("rating", rating);
+        await dispatch(createReviewThunk(formData, productId))
+        closeModal();
+    }
 
     const onChange = (num) =>{
         setRating(num)
@@ -16,7 +25,7 @@ function CreateReviewModal({productId}) {
 
     return (
         <form
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             encType="multipart/form-data"
         >
             <h1>How was your purchase?</h1>

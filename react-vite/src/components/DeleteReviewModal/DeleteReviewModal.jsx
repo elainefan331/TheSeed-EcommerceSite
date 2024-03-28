@@ -1,10 +1,10 @@
 import { useModal } from "../../context/Modal";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import "./DeleteReviewModal.css"
 
 function DeleteReviewModal({reviewId}) {
     const { closeModal } = useModal();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <div className="delete-review-modal-container">
