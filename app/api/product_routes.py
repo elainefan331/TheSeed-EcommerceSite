@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Product, User, Review
 from app.forms import CreateProductForm, CreateReviewForm
+from .aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 product_routes = Blueprint('product_routes', __name__)
 
@@ -28,7 +29,24 @@ def product_detail(id):
     product = Product.query.get(id)
     if not product:
         return {"message": "This product could not be found"}, 404
-    return product.to_dict()
+    product_dict = product.to_dict()
+    reviews_list = product_dict["reviews"]
+    num_reviews = len(reviews_list)
+    rating_sum = 0
+    for review in reviews_list:
+        rating_sum += review["rating"]
+    if num_reviews > 0:
+        avg = rating_sum / num_reviews
+        avg_rating = round(avg, 1)
+    
+    if num_reviews == 0:
+        avg_rating = 0
+        
+    product_dict["avg_rating"] = avg_rating 
+    product_dict["num_reviews"] = num_reviews
+    print("product_dict===========", product_dict)
+    return product_dict
+    # return product.to_dict()
 
 
 # create a product
@@ -41,12 +59,21 @@ def createProduct():
     user = current_user.to_dict()
     
     if form.validate_on_submit():
-        # image = form.image.data
+        image = form.image.data
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
+        
+        if "url" not in upload:
+            return form.errors
+        url = upload["url"]
+        
         new_product = Product(
             user_id = user["id"],
             name = form.name.data,
             description = form.description.data,
-            image = form.image.data, # for postman test
+            image = url, # for aws
+            # image = form.image.data, # for postman test
             price = form.price.data
         )
         
@@ -86,8 +113,12 @@ def updateProduct(id):
     if form.image.data:
         if form.validate_on_submit():
             image = form.image.data
-            # aws not setting yet
-            target_product.image = image
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            if "url" not in upload:
+                return form.errors
+            url = upload["url"]
+            target_product.image = url # for aws
         else:
             return form.errors
     

@@ -1,6 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
+import ProductIndex from '../components/ProductIndex';
+import ProductDetailPage from '../components/ProductDetailPage';
+import ManageProductPage from '../components/ManageProductPage';
+import CreateProductPage from '../components/CreateProductPage';
+import UpdateProductPage from '../components/UpdateProductPage';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -9,7 +14,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <ProductIndex />,
+      },
+      {
+        path: "/products/:productId",
+        element: <ProductDetailPage />
+      },
+      {
+        path: "/products/current",
+        element: <ManageProductPage />
+      },
+      {
+        path: "/products/new",
+        element: <CreateProductPage />
+      },
+      {
+        path: "/products/:productId/edit",
+        element: <UpdateProductPage />
       },
       {
         path: "login",

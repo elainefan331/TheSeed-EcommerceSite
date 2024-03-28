@@ -1,0 +1,11 @@
+.create-product-button {
+    padding: 10px 20px;
+    background-color: rgb(62, 188, 142);
+    border: none;
+    border-radius: 10px;
+}
+.create-product-link {
+    text-decoration: none;
+    color: white;
+    font-size: large;
+}
