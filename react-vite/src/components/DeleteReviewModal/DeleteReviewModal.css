@@ -1,0 +1,31 @@
+.delete-review-modal-container {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.delete-review-modal-container > button {
+    padding: 10px 0px;
+    border-radius: 20px;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+.delete-review-yes-button {
+    background-color: whitesmoke;
+    border: none;
+    color: black;
+    box-shadow: 2px 2px 2px gray;
+    cursor: pointer;
+}
+
+.delete-review-no-button {
+    background-color: rgb(40, 120, 13);
+    border: none;
+    color: white;
+    box-shadow: 2px 2px 2px gray;
+    cursor: pointer;
+}

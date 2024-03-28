@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Product, User, Review
 from app.forms import CreateProductForm, CreateReviewForm
+from .aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 product_routes = Blueprint('product_routes', __name__)
 
@@ -58,12 +59,21 @@ def createProduct():
     user = current_user.to_dict()
     
     if form.validate_on_submit():
-        # image = form.image.data
+        image = form.image.data
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
+        
+        if "url" not in upload:
+            return form.errors
+        url = upload["url"]
+        
         new_product = Product(
             user_id = user["id"],
             name = form.name.data,
             description = form.description.data,
-            image = form.image.data, # for postman test
+            image = url, # for aws
+            # image = form.image.data, # for postman test
             price = form.price.data
         )
         

@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleProductThunk } from "../../redux/product";
+import { useModal } from "../../context/Modal";
+import DeleteReviewModal from "../DeleteReviewModal";
 import "./ProductDetailPage.css"
 
 
 function ProductDetailPage() {
     const dispatch = useDispatch();
     const { productId } = useParams();
+    const { setModalContent } = useModal();
     const currentUser = useSelector(state => state.session.user)
     console.log("currentUser in component========>", currentUser)
     const productState = useSelector(state => state.product)
@@ -28,6 +31,10 @@ function ProductDetailPage() {
             }
             return false;
         }
+    }
+
+    const handleDeleteClick = (reviewId) => {
+        setModalContent(<DeleteReviewModal reviewId={reviewId} />)
     }
 
     return (
@@ -61,7 +68,7 @@ function ProductDetailPage() {
                         <div key={review.id} className="single-review-container">
                             <h4>Review by {review?.user.first_name}</h4>
                             <p>{review?.review}</p>
-                            {currentUser && currentUser?.id === review?.user_id && <button>Delete</button>}
+                            {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleDeleteClick(review?.id)}>Delete</button>}
                             {currentUser && currentUser?.id === review?.user_id && <button>Update</button>}
                         </div>
                     )

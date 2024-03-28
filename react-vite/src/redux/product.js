@@ -19,7 +19,11 @@ const getSingleProductAction = (product) => {
 }
 
 
+
+
 // Thunk Creators
+
+// get all products
 export const getAllProductsThunk = () => async (dispatch) => {
     const response = await fetch('/api/products', {
         method: 'GET',
@@ -30,6 +34,7 @@ export const getAllProductsThunk = () => async (dispatch) => {
     dispatch(getAllProductsAction(data.products))
 }
 
+// get product detail by product's id
 export const getSingleProductThunk = (productId) => async (dispatch) => {
     const response = await fetch(`/api/products/${productId}`, {
         method: 'GET',
@@ -38,6 +43,28 @@ export const getSingleProductThunk = (productId) => async (dispatch) => {
     const product = await response.json()
     console.log("product in thunk ===============>", product)
     dispatch(getSingleProductAction(product))
+}
+
+// get all the products belongs to current user
+export const getCurrentProductsThunk = () => async (dispatch) => {
+    const response = await fetch('/api/products/current', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await response.json()
+    dispatch(getAllProductsAction(data.products))
+}
+
+// create a new product thunk
+export const createNewProductThunk = (formData) => async (dispatch) => {
+    const response = await fetch('/api/products', {
+        method: 'POST',
+        body: formData
+    });
+    if(response.ok) {
+        const newProduct = await response.json()
+        dispatch(getSingleProductAction(newProduct))
+    }
 }
 
 
