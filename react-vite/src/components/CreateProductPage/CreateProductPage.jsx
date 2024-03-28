@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createNewProductThunk } from "../../redux/product";
+import "./CreateProductPage.css"
 
 function CreateProductPage() {
     const navigate = useNavigate();
@@ -76,7 +77,7 @@ function CreateProductPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     />
-                    <div>{errors.name && <p>{errors.name}</p>}</div>
+                    <div>{errors.name && <p className="create-product-validator">{errors.name}</p>}</div>
                 </label>
 
                 <label>
@@ -85,7 +86,7 @@ function CreateProductPage() {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     />
-                    <div>{errors.description && <p>{errors.description}</p>}</div>
+                    <div>{errors.description && <p className="create-product-validator">{errors.description}</p>}</div>
                 </label>
 
                 <label>
@@ -95,7 +96,7 @@ function CreateProductPage() {
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     />
-                    <div>{errors.price && <p>{errors.price}</p>}</div>
+                    <div>{errors.price && <p className="create-product-validator">{errors.price}</p>}</div>
                 </label>
 
                 <label>
@@ -105,8 +106,8 @@ function CreateProductPage() {
                     accept="image/*"
                     onChange={(e) => setImage(e.target.files[0])}
                     />
-                    <div>{errors.image && <p>{errors.image}</p>}</div>
-                    <div>{errors.imagetype && <p>{errors.imagetype}</p>}</div>
+                    <div>{errors.image && <p className="create-product-validator">{errors.image}</p>}</div>
+                    <div>{errors.imagetype && <p className="create-product-validator">{errors.imagetype}</p>}</div>
                 </label>
 
                 <button type="submit">Submit</button>

@@ -42,7 +42,7 @@ function ManageProductPage() {
                                 <NavLink to={`/products/${product.id}`} className="product-item-card-navlink">
                                     <ProductIndexItem product={product} />
                                 </NavLink>
-                                <button>Update</button>
+                                <button><Link to={`/products/${product.id}/edit`}>Update</Link></button>
                                 <button onClick={() => handleDeleteClick(product.id)}>Delete</button>
                             </div>
                         )

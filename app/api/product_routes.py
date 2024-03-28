@@ -113,8 +113,12 @@ def updateProduct(id):
     if form.image.data:
         if form.validate_on_submit():
             image = form.image.data
-            # aws not setting yet
-            target_product.image = image
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            if "url" not in upload:
+                return form.errors
+            url = upload["url"]
+            target_product.image = url # for aws
         else:
             return form.errors
     

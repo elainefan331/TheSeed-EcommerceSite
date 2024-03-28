@@ -1,5 +1,6 @@
 const GET_ALL_PRODUCTS = 'product/getAllProducts';
-const GET_SINGLE_PRODUCT = 'product/getSingleProduct'
+const GET_SINGLE_PRODUCT = 'product/getSingleProduct';
+const UPDATE_PRODUCT = 'product/updateProduct';
 
 
 
@@ -14,6 +15,13 @@ const getAllProductsAction = (products) => {
 const getSingleProductAction = (product) => {
     return {
         type: GET_SINGLE_PRODUCT,
+        payload: product
+    }
+}
+
+const updateProductAction = (product) => {
+    return {
+        type: UPDATE_PRODUCT,
         payload: product
     }
 }
@@ -67,6 +75,18 @@ export const createNewProductThunk = (formData) => async (dispatch) => {
     }
 }
 
+// update a product thunk
+export const updateProductThunk = (formData, productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}`, {
+        method: 'PUT',
+        body: formData
+    });
+    if(response.ok) {
+        const updateProduct = await response.json()
+        dispatch(updateProductAction(updateProduct))
+    }
+}
+
 
 
 
@@ -81,6 +101,9 @@ const productReducer = (state = initialState, action) => {
             return { ...state, Products: { ...newObj } }
         }
         case GET_SINGLE_PRODUCT: {
+            return {...state, Products: {...state.Products, [action.payload.id]: action.payload}}
+        }
+        case UPDATE_PRODUCT: {
             return {...state, Products: {...state.Products, [action.payload.id]: action.payload}}
         }
         default:
