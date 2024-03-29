@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleProductThunk } from "../../redux/product";
@@ -12,6 +12,9 @@ function ProductDetailPage() {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const { setModalContent } = useModal();
+    const [reviewUpdate, setReviewUpdate] = useState(false);
+
+
     const currentUser = useSelector(state => state.session.user)
     console.log("currentUser in component========>", currentUser)
     const productState = useSelector(state => state.product)
@@ -22,7 +25,7 @@ function ProductDetailPage() {
 
     useEffect(() => {
         dispatch(getSingleProductThunk(productId))
-    }, [dispatch, productId])
+    }, [dispatch, productId, reviewUpdate])
 
     const ishidden = () => {
         if(!currentUser) return true;
@@ -39,7 +42,7 @@ function ProductDetailPage() {
     }
 
     const handlePostClick = (productId) => {
-        setModalContent(<CreateReviewModal productId={productId}/>)
+        setModalContent(<CreateReviewModal productId={productId} reviewPosted={() => setReviewUpdate(prev => !prev)}/>)
     }
 
     return (

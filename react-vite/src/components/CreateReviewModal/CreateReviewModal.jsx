@@ -4,7 +4,7 @@ import { useState } from "react";
 import StarsRatingInput from "../StarsRatingInput";
 import { createReviewThunk } from "../../redux/reviews";
 
-function CreateReviewModal({productId}) {
+function CreateReviewModal({productId, reviewPosted}) {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
@@ -15,7 +15,8 @@ function CreateReviewModal({productId}) {
         const formData = new FormData();
         formData.append("review", review);
         formData.append("rating", rating);
-        await dispatch(createReviewThunk(formData, productId))
+        await dispatch(createReviewThunk(formData, productId));
+        reviewPosted();
         closeModal();
     }
 
