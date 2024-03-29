@@ -40,7 +40,7 @@ function CreateReviewModal({productId, reviewPosted}) {
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                 />
-                <p>review at least 10 characters</p>
+                <div>{review?.length < 10 && <p className="create-review-validator">review needs 10 or more characters</p>}</div>
             </div>
             <div>
                 <div className="create-review-stars-container">

@@ -23,7 +23,15 @@
     color: rgb(83, 83, 83);
 }
 
-.create-product-submit-button {
+.crate-product-submit-button-disable {
+    padding: 10px 10px;
+    background-color: rgb(210, 206, 206);
+    border: none;
+    color: white;
+    border-radius: 20px;
+}
+
+.create-product-submit-button-active {
     padding: 10px 10px;
     background-color: rgb(62, 188, 142);
     border: none;

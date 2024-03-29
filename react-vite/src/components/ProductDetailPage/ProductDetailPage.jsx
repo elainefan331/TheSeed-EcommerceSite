@@ -48,8 +48,8 @@ function ProductDetailPage() {
         setModalContent(<CreateReviewModal productId={productId} reviewPosted={() => setReviewPosted(prev => !prev)}/>)
     }
 
-    const handleUpdateClick = (reviewId) => {
-        setModalContent(<UpdateReviewModal reviewId={reviewId} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
+    const handleUpdateClick = (reviewId, reviewText, originRating) => {
+        setModalContent(<UpdateReviewModal reviewId={reviewId} reviewText={reviewText} originRating={originRating} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
     }
 
     return (
@@ -84,7 +84,7 @@ function ProductDetailPage() {
                             <h4>Review by {review?.user.first_name}</h4>
                             <p>{review?.review}</p>
                             {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleDeleteClick(review?.id)}>Delete</button>}
-                            {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleUpdateClick(review?.id)}>Update</button>}
+                            {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleUpdateClick(review?.id, review?.review, review?.rating)}>Update</button>}
                         </div>
                     )
                 })}

@@ -3,22 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import StarsRatingInput from "../StarsRatingInput";
 import { updateReviewThunk, getSingleReviewThunk } from "../../redux/reviews";
+import "./UpdateReviewModal.css"
 
-function UpdateReviewModal({reviewId, reviewUpdated}) {
+
+function UpdateReviewModal({reviewId, reviewText, originRating, reviewUpdated}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const reviewState = useSelector(state => state.review)
-    console.log("reviewState in component========", reviewState)
-    const targetReview = reviewState[reviewId]
-    console.log("review in component========", targetReview)
+    // const reviewState = useSelector(state => state.review)
+    // console.log("reviewState in component========", reviewState)
+    // const targetReview = reviewState[reviewId]
+    console.log("review in component========", reviewText)
 
-    const [review, setReview] = useState(targetReview?.review)
-    const [rating, setRating] = useState(targetReview?.rating)
+    // const [review, setReview] = useState(targetReview?.review || "")
+    const [review, setReview] = useState(reviewText)
+    // const [rating, setRating] = useState(targetReview?.rating)
+    const [rating, setRating] = useState(originRating)
 
 
-    useEffect(() => {
-        dispatch(getSingleReviewThunk(reviewId))
-    }, [dispatch, reviewId])
+    // useEffect(() => {
+    //     dispatch(getSingleReviewThunk(reviewId))
+    // }, [dispatch, reviewId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +38,7 @@ function UpdateReviewModal({reviewId, reviewUpdated}) {
         setRating(num)
     }
 
-    const isDisabled = review.length < 10 || rating === null;
+    const isDisabled = review?.length < 10 || rating === null;
 
     return (
         <form
@@ -49,7 +53,7 @@ function UpdateReviewModal({reviewId, reviewUpdated}) {
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                 />
-                <p>review at least 10 characters</p>
+                <div>{review?.length < 10 && <p className="update-review-validator">review needs 10 or more characters</p>}</div>
             </div>
             <div>
                 <div className="create-review-stars-container">

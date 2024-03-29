@@ -22,14 +22,27 @@
     /* border: red solid 2px; */
 }
 
-.update-product-submit-button {
-    padding: 8px 10px;
+.update-product-submit-button-disable {
+    padding: 10px 10px;
+    background-color: rgb(210, 206, 206);
+    border: none;
+    color: white;
+    border-radius: 20px;
+}
+
+.update-product-submit-button-active {
+    padding: 10px 10px;
     background-color: rgb(62, 188, 142);
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
+    box-shadow: 2px 2px 2px gray;
 }
 
 .update-product-textarea {
     height: 130px;
+}
+
+.update-product-validator {
+    color: rgb(62, 188, 142);
 }

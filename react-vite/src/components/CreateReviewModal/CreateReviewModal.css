@@ -19,10 +19,8 @@
     height: 50px;
 }
 
-.create-review-textarea-container > p {
+.create-review-validator {
     color: rgb(62, 188, 142);
-    /* border: 2px red solid; */
-    margin: 0px;
 }
 
 .create-review-stars-container {
