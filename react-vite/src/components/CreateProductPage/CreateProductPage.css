@@ -24,11 +24,12 @@
 }
 
 .create-product-submit-button {
-    padding: 8px 10px;
+    padding: 10px 10px;
     background-color: rgb(62, 188, 142);
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
+    box-shadow: 2px 2px 2px gray;
 }
 
 .create-product-textarea {

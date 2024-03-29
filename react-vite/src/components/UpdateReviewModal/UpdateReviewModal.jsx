@@ -1,23 +1,32 @@
 import { useModal } from "../../context/Modal";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import StarsRatingInput from "../StarsRatingInput";
-import { createReviewThunk } from "../../redux/reviews";
-import "./CreateReviewModal.css"
+import { updateReviewThunk, getSingleReviewThunk } from "../../redux/reviews";
 
-function CreateReviewModal({productId, reviewPosted}) {
-    const { closeModal } = useModal();
+function UpdateReviewModal({reviewId, reviewUpdated}) {
     const dispatch = useDispatch();
-    const [review, setReview] = useState("")
-    const [rating, setRating] = useState(null)
+    const { closeModal } = useModal();
+    const reviewState = useSelector(state => state.review)
+    console.log("reviewState in component========", reviewState)
+    const targetReview = reviewState[reviewId]
+    console.log("review in component========", targetReview)
+
+    const [review, setReview] = useState(targetReview?.review)
+    const [rating, setRating] = useState(targetReview?.rating)
+
+
+    useEffect(() => {
+        dispatch(getSingleReviewThunk(reviewId))
+    }, [dispatch, reviewId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("review", review);
         formData.append("rating", rating);
-        await dispatch(createReviewThunk(formData, productId));
-        reviewPosted();
+        await dispatch(updateReviewThunk(formData, reviewId));
+        reviewUpdated();
         closeModal();
     }
 
@@ -33,7 +42,7 @@ function CreateReviewModal({productId, reviewPosted}) {
             encType="multipart/form-data"
             className="create-review-modal-container"
         >
-            <h1>How was your purchase?</h1>
+            <h1>Update your review</h1>
             <div className="create-review-textarea-container">
                 <textarea
                     placeholder="Leave your review here..."
@@ -62,4 +71,4 @@ function CreateReviewModal({productId, reviewPosted}) {
     )
 }
 
-export default CreateReviewModal;
+export default UpdateReviewModal;

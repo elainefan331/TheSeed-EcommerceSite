@@ -1,11 +1,17 @@
+.manage-your-product-h1 {
+    color: rgb(83, 83, 83);
+}
+
 .create-product-button {
     padding: 10px 20px;
     background-color: rgb(62, 188, 142);
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px gray;
 }
+
 .create-product-link {
     text-decoration: none;
     color: white;
-    font-size: large;
+    font-size: medium;
 }

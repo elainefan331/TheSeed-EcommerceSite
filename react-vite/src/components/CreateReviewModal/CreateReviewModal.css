@@ -1,0 +1,56 @@
+.create-review-modal-container {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: rgb(83, 83, 83);
+}
+
+.create-review-textarea-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* border: green 2px solid; */
+}
+
+.create-review-textarea-container > textarea {
+    width: 100%;
+    height: 50px;
+}
+
+.create-review-textarea-container > p {
+    color: rgb(62, 188, 142);
+    /* border: 2px red solid; */
+    margin: 0px;
+}
+
+.create-review-stars-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-review-stars-container > span {
+    color: rgb(83, 83, 83);
+}
+
+
+.create-review-submit-button-disable {
+    padding: 10px 5px; 
+    background-color: rgb(210, 206, 206);
+    border: none;
+    color: white;
+    border-radius: 20px;
+}
+
+.create-review-submit-button-active {
+    cursor: pointer;
+    padding: 10px 5px; 
+    background-color: rgb(62, 188, 142);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px gray;
+}

@@ -32,7 +32,7 @@ function ManageProductPage() {
 
     return (
         <div>
-            <h1>Manage Your Products</h1>
+            <h1 className="manage-your-product-h1">Manage Your Products</h1>
             <button className="create-product-button"><Link to={`/products/new`} className="create-product-link">create a new product</Link></button>
             <section>
                 <div className="products-container">

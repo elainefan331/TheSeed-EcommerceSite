@@ -5,6 +5,7 @@ import { getSingleProductThunk } from "../../redux/product";
 import { useModal } from "../../context/Modal";
 import DeleteReviewModal from "../DeleteReviewModal";
 import CreateReviewModal from "../CreateReviewModal";
+import UpdateReviewModal from "../UpdateReviewModal";
 import "./ProductDetailPage.css"
 
 
@@ -12,7 +13,9 @@ function ProductDetailPage() {
     const dispatch = useDispatch();
     const { productId } = useParams();
     const { setModalContent } = useModal();
-    const [reviewUpdate, setReviewUpdate] = useState(false);
+    const [reviewPosted, setReviewPosted] = useState(false);
+    const [reviewDeleted, setReviewDeleted] = useState(false);
+    const [reviewUpdated, setReviewUpdated] = useState(false);
 
 
     const currentUser = useSelector(state => state.session.user)
@@ -25,7 +28,7 @@ function ProductDetailPage() {
 
     useEffect(() => {
         dispatch(getSingleProductThunk(productId))
-    }, [dispatch, productId, reviewUpdate])
+    }, [dispatch, productId, reviewPosted, reviewDeleted, reviewUpdated])
 
     const ishidden = () => {
         if(!currentUser) return true;
@@ -38,11 +41,15 @@ function ProductDetailPage() {
     }
 
     const handleDeleteClick = (reviewId) => {
-        setModalContent(<DeleteReviewModal reviewId={reviewId} />)
+        setModalContent(<DeleteReviewModal reviewId={reviewId} reviewDeleted={() => setReviewDeleted(prev => !prev)}/>)
     }
 
     const handlePostClick = (productId) => {
-        setModalContent(<CreateReviewModal productId={productId} reviewPosted={() => setReviewUpdate(prev => !prev)}/>)
+        setModalContent(<CreateReviewModal productId={productId} reviewPosted={() => setReviewPosted(prev => !prev)}/>)
+    }
+
+    const handleUpdateClick = (reviewId) => {
+        setModalContent(<UpdateReviewModal reviewId={reviewId} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
     }
 
     return (
@@ -77,7 +84,7 @@ function ProductDetailPage() {
                             <h4>Review by {review?.user.first_name}</h4>
                             <p>{review?.review}</p>
                             {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleDeleteClick(review?.id)}>Delete</button>}
-                            {currentUser && currentUser?.id === review?.user_id && <button>Update</button>}
+                            {currentUser && currentUser?.id === review?.user_id && <button onClick={() => handleUpdateClick(review?.id)}>Update</button>}
                         </div>
                     )
                 })}

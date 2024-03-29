@@ -4,26 +4,27 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: rgb(83, 83, 83);
 }
 
 .delete-review-modal-container > button {
     padding: 10px 0px;
     border-radius: 20px;
-    font-size: large;
-    font-weight: bold;
+    /* font-size: large; */
+    /* font-weight: bold; */
 }
 
 
 .delete-review-yes-button {
     background-color: whitesmoke;
     border: none;
-    color: black;
+    color: rgb(83, 83, 83);
     box-shadow: 2px 2px 2px gray;
     cursor: pointer;
 }
 
 .delete-review-no-button {
-    background-color: rgb(40, 120, 13);
+    background-color: rgb(62, 188, 142);
     border: none;
     color: white;
     box-shadow: 2px 2px 2px gray;
