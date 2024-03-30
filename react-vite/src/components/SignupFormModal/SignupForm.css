@@ -38,3 +38,15 @@
     margin-bottom: 10px;
     padding: 2px 13px;
 }
+
+.signup-first-name-input {
+    margin-top: 10px;
+    margin-left: 3px;
+    padding: 2px 35px;
+}
+
+.signup-last-name-input {
+    margin-top: 10px;
+    margin-left: 3px;
+    padding: 2px 35px;
+}
