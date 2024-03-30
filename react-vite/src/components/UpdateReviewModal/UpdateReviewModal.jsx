@@ -1,23 +1,36 @@
 import { useModal } from "../../context/Modal";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import StarsRatingInput from "../StarsRatingInput";
-import { createReviewThunk } from "../../redux/reviews";
-import "./CreateReviewModal.css"
+import { updateReviewThunk, getSingleReviewThunk } from "../../redux/reviews";
+import "./UpdateReviewModal.css"
 
-function CreateReviewModal({productId, reviewPosted}) {
-    const { closeModal } = useModal();
+
+function UpdateReviewModal({reviewId, reviewText, originRating, reviewUpdated}) {
     const dispatch = useDispatch();
-    const [review, setReview] = useState("")
-    const [rating, setRating] = useState(null)
+    const { closeModal } = useModal();
+    // const reviewState = useSelector(state => state.review)
+    // console.log("reviewState in component========", reviewState)
+    // const targetReview = reviewState[reviewId]
+    console.log("review in component========", reviewText)
+
+    // const [review, setReview] = useState(targetReview?.review || "")
+    const [review, setReview] = useState(reviewText)
+    // const [rating, setRating] = useState(targetReview?.rating)
+    const [rating, setRating] = useState(originRating)
+
+
+    // useEffect(() => {
+    //     dispatch(getSingleReviewThunk(reviewId))
+    // }, [dispatch, reviewId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("review", review);
         formData.append("rating", rating);
-        await dispatch(createReviewThunk(formData, productId));
-        reviewPosted();
+        await dispatch(updateReviewThunk(formData, reviewId));
+        reviewUpdated();
         closeModal();
     }
 
@@ -25,7 +38,7 @@ function CreateReviewModal({productId, reviewPosted}) {
         setRating(num)
     }
 
-    const isDisabled = review.length < 10 || rating === null;
+    const isDisabled = review?.length < 10 || rating === null;
 
     return (
         <form
@@ -33,14 +46,14 @@ function CreateReviewModal({productId, reviewPosted}) {
             encType="multipart/form-data"
             className="create-review-modal-container"
         >
-            <h1>How was your purchase?</h1>
+            <h1>Update your review</h1>
             <div className="create-review-textarea-container">
                 <textarea
                     placeholder="Leave your review here..."
                     value={review}
                     onChange={(e) => setReview(e.target.value)}
                 />
-                <div>{review?.length < 10 && <p className="create-review-validator">review needs 10 or more characters</p>}</div>
+                <div>{review?.length < 10 && <p className="update-review-validator">review needs 10 or more characters</p>}</div>
             </div>
             <div>
                 <div className="create-review-stars-container">
@@ -62,4 +75,4 @@ function CreateReviewModal({productId, reviewPosted}) {
     )
 }
 
-export default CreateReviewModal;
+export default UpdateReviewModal;

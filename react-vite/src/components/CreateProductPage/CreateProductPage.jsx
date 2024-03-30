@@ -60,7 +60,7 @@ function CreateProductPage() {
         }
     }
 
-
+    const isDisabled = name.length < 1 || description.length < 20 || !price || !image;
 
     return (
         <div>
@@ -121,7 +121,13 @@ function CreateProductPage() {
                             <div>{errors.imagetype && <p className="create-product-validator">{errors.imagetype}</p>}</div>
                     </div>
 
-                    <button className="create-product-submit-button" type="submit">Submit</button>
+                    <button 
+                        className={isDisabled? "crate-product-submit-button-disable" : "create-product-submit-button-active"}
+                        type="submit"
+                        disabled= {isDisabled}
+                    >
+                        Submit
+                    </button>
                     {(imageLoading) && <p>Loading...</p>}
                 </div>
             </form>

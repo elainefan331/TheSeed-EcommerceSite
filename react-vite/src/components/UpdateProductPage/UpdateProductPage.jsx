@@ -43,7 +43,7 @@ function UpdateProductPage() {
     }
 
 
-
+    const isDisabled = name.length < 1 || description.length < 20 || !price
 
     return (
         <div>
@@ -64,6 +64,7 @@ function UpdateProductPage() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             />
+                            <div>{name.length < 1 && <p className="update-product-validator">name is required</p>}</div>
                     </div> 
 
                     <div className="update-product-input-container">
@@ -75,6 +76,7 @@ function UpdateProductPage() {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             />
+                            <div>{description.length < 20 && <p className="update-product-validator">Description needs 20 or more characters</p>}</div>
                     </div>
 
                     <div className="update-product-input-container">
@@ -86,6 +88,7 @@ function UpdateProductPage() {
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             />
+                            <div>{!price && <p className="update-product-validator">price is required</p>}</div>
                     </div>
 
                     <div className="update-product-input-container">
@@ -103,7 +106,13 @@ function UpdateProductPage() {
                             />
                     </div>
 
-                    <button className="update-product-submit-button" type="submit">Submit</button>
+                    <button 
+                        className={isDisabled? "update-product-submit-button-disable" : "update-product-submit-button-active"} 
+                        type="submit"
+                        disabled= {isDisabled}
+                    >
+                        Submit
+                    </button>
                 </div>
             </form>
 

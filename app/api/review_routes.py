@@ -10,6 +10,16 @@ review_routes = Blueprint('review_routes', __name__)
 # get all reviews created by the current user
 # do i even need this route?
 
+# get a review by review's id
+@review_routes.route("/<int:id>")
+def review_detail(id):
+    review = Review.query.get(id)
+    if not review:
+        return {"message": "This review could not be found"}, 404
+    
+    return review.to_dict()
+    
+
 
 # edit(update) a review by review's id
 @review_routes.route("/<int:id>", methods=["PUT"])

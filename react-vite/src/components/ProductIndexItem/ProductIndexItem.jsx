@@ -5,8 +5,8 @@ function ProductIndexItem({ product }) {
         <div className="product-card-container">
             <img src={product.image} alt={product.name} />
             <div className="product-card-name-price-container">
-                <p>{product.name}</p>
-                <p>${product.price}</p>
+                <p id="product-item-name">{product.name}</p>
+                <p id="product-item-price">${product.price}</p>
             </div>
         </div>
     )
