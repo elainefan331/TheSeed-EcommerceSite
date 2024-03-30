@@ -1,3 +1,8 @@
+.product-show-page-container {
+    position: relative;
+    margin-top: 1px;
+}
+
 .product-details-container {
     margin: 3vw;
     display: flex;

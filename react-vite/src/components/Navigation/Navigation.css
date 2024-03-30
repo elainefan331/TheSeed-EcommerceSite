@@ -33,5 +33,11 @@
   padding-left: 20px;
   padding-bottom: 15px;
   border-bottom: 1px lightgray solid;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: white;
 }
 
