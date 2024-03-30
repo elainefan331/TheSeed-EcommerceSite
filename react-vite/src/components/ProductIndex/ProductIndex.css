@@ -10,12 +10,16 @@
     row-gap: 1vw;
     width: 100%;
     margin-top: 20px;
+    /* margin-right: 3vw; */
+    /* border: 2px red solid; */
 }
 
 
 
 .product-item-card-navlink {
     text-decoration: none;
+    /* border: 2px green solid; */
+    max-width: 410px;
     /* color: rgb(83, 83, 83); */
 }
 
@@ -53,6 +57,7 @@
     color: white;
     font-size: medium;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .landing-page-new-arrivals-button {
@@ -63,6 +68,7 @@
     color: rgb(62, 188, 142);
     font-size: medium;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .landing-page-h1 {

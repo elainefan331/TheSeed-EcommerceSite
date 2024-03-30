@@ -1,3 +1,7 @@
+.manage-your-product-whole-container {
+    margin: 3vw
+}
+
 .manage-your-product-h1 {
     color: rgb(83, 83, 83);
 }
@@ -6,12 +10,28 @@
     padding: 10px 20px;
     background-color: rgb(62, 188, 142);
     border: none;
-    border-radius: 20px;
-    box-shadow: 2px 2px 2px gray;
+    border-radius: 5px;
+    /* box-shadow: 2px 2px 2px gray; */
 }
 
 .create-product-link {
     text-decoration: none;
     color: white;
     font-size: medium;
+}
+
+.update-product-link {
+    text-decoration: none;
+    color: white;
+}
+
+.update-product-button,
+.delete-product-button {
+    margin-right: 10px;
+    padding: 5px 20px;
+    background-color: rgb(62, 188, 142);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }

@@ -31,7 +31,7 @@ function ManageProductPage() {
 
 
     return (
-        <div>
+        <div className="manage-your-product-whole-container">
             <h1 className="manage-your-product-h1">Manage Your Products</h1>
             <button className="create-product-button"><Link to={`/products/new`} className="create-product-link">create a new product</Link></button>
             <section>
@@ -42,8 +42,8 @@ function ManageProductPage() {
                                 <NavLink to={`/products/${product.id}`} className="product-item-card-navlink">
                                     <ProductIndexItem product={product} />
                                 </NavLink>
-                                <button><Link to={`/products/${product.id}/edit`}>Update</Link></button>
-                                <button onClick={() => handleDeleteClick(product.id)}>Delete</button>
+                                <button className="update-product-button"><Link className="update-product-link" to={`/products/${product.id}/edit`}>Update</Link></button>
+                                <button className="delete-product-button" onClick={() => handleDeleteClick(product.id)}>Delete</button>
                             </div>
                         )
                     })}
