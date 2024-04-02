@@ -64,7 +64,7 @@ function ProfileButton() {
               <p>{user.email}</p>
               <p className="manage-product-p" onClick={manageProducts}>Manage Products</p>
               <p>
-                <button className="log-out-button"onClick={logout}>Log Out</button>
+                <button className="log-out-button" onClick={logout}>Log Out</button>
               </p>
             </>
           ) : (

@@ -31,6 +31,10 @@ function CreateProductPage() {
             validationObj.price = "Price is required"
         }
 
+        if(price <= 0) {
+            validationObj.minprice = "Price must be greater than 0"
+        }
+
         if(!image) {
             validationObj.image = "Image is required (accept pdf, png, jpg, jpeg, gif)"
         } else {
@@ -60,7 +64,7 @@ function CreateProductPage() {
         }
     }
 
-    const isDisabled = name.length < 1 || description.length < 20 || !price || !image;
+    const isDisabled = name.length < 1 || description.length < 20 || !price || !image || price <=0;
 
     return (
         <div>
@@ -106,6 +110,7 @@ function CreateProductPage() {
                             onChange={(e) => setPrice(e.target.value)}
                             />
                             <div>{errors.price && <p className="create-product-validator">{errors.price}</p>}</div>
+                            <div>{errors.minprice && <p className="create-product-validator">{errors.minprice}</p>}</div>
                     </div>
 
                     <div className="create-product-input-container">

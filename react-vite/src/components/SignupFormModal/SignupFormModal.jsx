@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
@@ -14,9 +14,16 @@ function SignupFormModal() {
   const [last_name, setLast_Name] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setHasSubmitted(true);
+
+    if (Object.values(errors).length) {
+      return null;
+    }
 
     if (password !== confirmPassword) {
       return setErrors({
@@ -42,9 +49,23 @@ function SignupFormModal() {
     }
   };
 
+  useEffect(() => {
+    const err = {};
+    setHasSubmitted(false);
+    if (username.length < 4 || username.length > 15) err.username = 'Username must be 4-15 characters';
+    if (email.length === 0) err.email = 'Email is required';
+    if (first_name.length === 0) err.first_name = 'First Name is required';
+    if (last_name.length === 0) err.last_name = 'Last Name is required';
+    if (password.length < 8) err.password = 'Password must be 8-20 characters';
+    if (confirmPassword.length < 8) err.confirmPassword = "Confirmed password must be 8-20 characters"
+    setErrors(err);
+  }, [username, email, first_name, last_name, password, confirmPassword])
+
+  
+
   return (
     <>
-      {errors.server && <p>{errors.server}</p>}
+      {hasSubmitted && errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit} className="signup-form">
       <h1>Sign Up</h1>
         <label>
@@ -56,8 +77,9 @@ function SignupFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <div>{hasSubmitted && errors.email && <p>{errors.email}</p>}</div>
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {/* {errors.email && <p>{errors.email}</p>} */}
         <label>
           Username
           <input
@@ -67,8 +89,9 @@ function SignupFormModal() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
+          <div>{hasSubmitted && errors.username && <p>{errors.username}</p>}</div>
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {/* {errors.username && <p>{errors.username}</p>} */}
 
         <label>
           First Name
@@ -79,8 +102,9 @@ function SignupFormModal() {
           onChange={(e) => setFirst_Name(e.target.value)}
           required
           />
+          <div>{hasSubmitted && errors.first_name && <p>{errors.first_name}</p>}</div>
         </label>
-        {errors.first_name && <p>{errors.first_name}</p>}
+        {/* {errors.first_name && <p>{errors.first_name}</p>} */}
 
         <label>
           Last Name
@@ -91,8 +115,9 @@ function SignupFormModal() {
           onChange={(e) => setLast_Name(e.target.value)}
           required
           />
+          <div>{hasSubmitted && errors.last_name && <p>{errors.last_name}</p>}</div>
         </label>
-        {errors.last_name && <p>{errors.last_name}</p>}
+        {/* {errors.last_name && <p>{errors.last_name}</p>} */}
 
         <label>
           Password
@@ -103,8 +128,9 @@ function SignupFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <div>{hasSubmitted && errors.password && <p>{errors.password}</p>}</div>
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {/* {errors.password && <p>{errors.password}</p>} */}
         <label>
           Confirm Password
           <input
@@ -114,8 +140,9 @@ function SignupFormModal() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <div>{hasSubmitted && errors.confirmPassword && <p>{errors.confirmPassword}</p>}</div>
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {/* {errors.confirmPassword && <p>{errors.confirmPassword}</p>} */}
         <button type="submit" className="signup-button">Sign Up</button>
       </form>
     </>

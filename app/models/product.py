@@ -21,7 +21,8 @@ class Product(db.Model):
     user_in_product = db.relationship('User', back_populates='product_in_user')
     
     reviews_in_product = db.relationship('Review', back_populates='product_in_review', cascade="all, delete")
-    items_in_product = db.relationship('Item', back_populates='product_in_item')
+
+    items_in_product = db.relationship('Item', back_populates='product_in_item', cascade="all, delete")
     
     
     @property

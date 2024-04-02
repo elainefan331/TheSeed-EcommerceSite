@@ -37,6 +37,7 @@
     border-radius: 20px;
     color: white;
     box-shadow: 2px 2px 2px gray;
+    cursor: pointer;
 }
 
 .update-product-textarea {
