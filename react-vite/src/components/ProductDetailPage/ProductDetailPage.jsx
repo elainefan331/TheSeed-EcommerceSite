@@ -53,6 +53,11 @@ function ProductDetailPage() {
         setModalContent(<UpdateReviewModal reviewId={reviewId} reviewText={reviewText} originRating={originRating} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
     }
 
+    const addToCartButtonClick = (e) => {
+        e.preventDefault();
+        window.alert('Feature coming soon');
+    }
+
     return (
         <div className="product-show-page-container">
             <div className="product-details-container">
@@ -64,7 +69,9 @@ function ProductDetailPage() {
                         <h3>Description</h3>
                         <p>{product?.description}</p>
                     </div>
-                    <button className="product-detail-add-to-cart-button">Add To Cart</button>
+                    <button 
+                    onClick={addToCartButtonClick}
+                    className="product-detail-add-to-cart-button">Add To Cart</button>
                 </div>
             </div>
             <div className="all-reviews-container">
