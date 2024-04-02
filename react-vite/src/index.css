@@ -1,1 +1,6 @@
 /* TODO: Add sitewide styles */
+.footer {
+    color: rgb(83, 83, 83);
+    text-align: end;
+    margin-bottom: 1vh;
+}
