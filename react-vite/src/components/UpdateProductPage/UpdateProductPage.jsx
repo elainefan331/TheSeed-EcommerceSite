@@ -43,7 +43,7 @@ function UpdateProductPage() {
     }
 
 
-    const isDisabled = name.length < 1 || description.length < 20 || !price
+    const isDisabled = name.length < 1 || description.length < 20 || !price || price <=0;
 
     return (
         <div>
@@ -89,6 +89,7 @@ function UpdateProductPage() {
                             onChange={(e) => setPrice(e.target.value)}
                             />
                             <div>{!price && <p className="update-product-validator">price is required</p>}</div>
+                            <div>{price <= 0 && <p className="update-product-validator">price must be greater than 0</p>}</div>
                     </div>
 
                     <div className="update-product-input-container">
