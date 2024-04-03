@@ -65,3 +65,24 @@
   align-items: center;
   gap: 20px;
 }
+
+.shopping-cart-button {
+  border: none;
+  background-color: white;
+}
+
+.shopping-cart-dropdown {
+  position: absolute;
+  color: rgb(83, 83, 83);
+  top: 23px;
+  right: 25px;
+  background-color: white;
+  box-shadow: 2px 2px 2px gray;
+  /* border: solid 1px rgb(200, 200, 200); */
+  min-width: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 18px;
+  z-index: 1;
+}

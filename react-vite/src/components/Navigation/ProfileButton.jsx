@@ -14,11 +14,13 @@ function ProfileButton() {
   const ulRef = useRef();
   const navigate = useNavigate();
 
+ 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
     setShowMenu(!showMenu);
   };
-
+  
+ 
   useEffect(() => {
     if (!showMenu) return;
 
@@ -56,6 +58,7 @@ function ProfileButton() {
           <i className="fa-solid fa-user"></i>
         </div>
       </button>
+      
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (

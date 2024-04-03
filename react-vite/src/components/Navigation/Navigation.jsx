@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import ShoppingCart from "./ShoppingCart";
 import "./Navigation.css";
 
 function Navigation() {
+  
   return (
     <div className="header">
         
@@ -18,6 +20,10 @@ function Navigation() {
             {/* <a rel='noreferrer' href="https://github.com/elainefan331" className="github-link" target="_blank">Elaine Fan</a> */}
           {/* </div> */}
           <ProfileButton />
+          
+          <ShoppingCart />
+          
+         
         </div>
       
     </div>
