@@ -93,8 +93,12 @@ function ShoppingCart() {
       
         {showMenu && (
             <ul className={"shopping-cart-dropdown"} ref={ulRef}>
-                <h1>shopping cart</h1>
-                <div className="shopping-cart-items-container shopping-cart-items-column-container">
+                <div className="shopping-cart-h1-and-x">
+                    <h1>shopping cart</h1>
+                    <i onClick={closeMenu} class="fa-solid fa-xmark"></i>
+                </div>
+                
+                <div className="shopping-cart-items-column-container">
                     <span>Product</span>
                     <span className="shopping-cart-price-column-span">Price</span>
                     <span className="shopping-cart-buttons-column-span">Qty</span>

@@ -50,6 +50,12 @@ function ProfileButton() {
     navigate('/products/current')
   }
 
+  const orderHistoryClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    navigate('/orders')
+  }
+
   return (
     <>
       <button onClick={toggleMenu} className='user-button'>
@@ -66,6 +72,7 @@ function ProfileButton() {
               <p>{user.username}</p>
               <p>{user.email}</p>
               <p className="manage-product-p" onClick={manageProducts}>Manage Products</p>
+              <p className="order-history-p" onClick={orderHistoryClick}>Order History</p>
               <p>
                 <button className="log-out-button" onClick={logout}>Log Out</button>
               </p>

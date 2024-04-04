@@ -7,6 +7,7 @@ import ManageProductPage from '../components/ManageProductPage';
 import CreateProductPage from '../components/CreateProductPage';
 import UpdateProductPage from '../components/UpdateProductPage';
 import CheckoutPage from '../components/CheckoutPage';
+import OrderHistoryPage from '../components/OrderHistoryPage';
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "/products/checkout",
         element: <CheckoutPage />
+      },
+      {
+        path: "/orders",
+        element: <OrderHistoryPage />
       },
       {
         path: "login",

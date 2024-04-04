@@ -1,16 +1,25 @@
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import CheckoutItem from "../CheckoutItem";
+import { useDispatch } from "react-redux";
+import { checkoutThunk } from "../../redux/shopping-cart";
 import "./CheckoutPage.css"
 
 function CheckoutPage() {
     const { cartItems, setCartItems } = useShoppingCart();
-    console.log('cartItems=========', cartItems)
+    const dispatch = useDispatch();
+    // console.log('cartItems=========', cartItems)
 
     const subtotal = cartItems.reduce((total, item) => {
         return total + (parseFloat(item.productPrice) * item.quantity);
     }, 0);
 
     const formattedSubtotal = subtotal.toFixed(2);
+
+    const placeOrderClick = async(e) => {
+        e.preventDefault();
+        await dispatch(checkoutThunk(cartItems));
+        // setCartItems([]);
+    }
 
 
 
@@ -25,7 +34,9 @@ function CheckoutPage() {
             ))}
             <div className="subtotal-place-order-container">
                 <p className="subtotal-p">Subtotal: ${formattedSubtotal}</p>
-                <button className="place-order-button">Place Order</button>
+                <button
+                    onClick={placeOrderClick}
+                    className="place-order-button">Place Order</button>
             </div>
         </div>
     )

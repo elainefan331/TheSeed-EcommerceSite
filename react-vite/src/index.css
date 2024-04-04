@@ -2,5 +2,8 @@
 .footer {
     color: rgb(83, 83, 83);
     text-align: end;
+    margin-top: 10vh;
     margin-bottom: 1vh;
+    background-color: rgb(247, 244, 239);
+    padding: 15px;
 }

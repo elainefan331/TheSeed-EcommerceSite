@@ -55,6 +55,9 @@ function CheckoutItem({item}) {
         navigate(`/products/${productId}`)
     }
 
+    const itemSubtotal = item?.productPrice * item?.quantity;
+    const formattedItemSubtotal = itemSubtotal.toFixed(2);
+
     return (
         <div className="checkout-page-item-card">
             <img className="checkout-item-image" src={item?.productImage} onClick={(e) => checkoutItemImageClick(e, item?.productId)}/>
@@ -62,7 +65,7 @@ function CheckoutItem({item}) {
                 <Link className="checkout-item-link" to={`/products/${item?.productId}`}>{item?.productName}</Link>
             </div>
             <div className="checkout-item-p-container">
-                <p>${item?.productPrice}</p>
+                <p>${item?.productPrice} / per item</p>
             </div>
             <div className="checkout-item-button-container">
                 <button
@@ -79,6 +82,7 @@ function CheckoutItem({item}) {
                 className="checkout-item-remove-button"
                 onClick={(e) => removeButtonClick(e, item)}    
             >remove</button>
+            <p className="checkout-item-itemSubtotal-p">${formattedItemSubtotal}</p>
         </div>
     )
 }

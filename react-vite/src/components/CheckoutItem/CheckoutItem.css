@@ -1,12 +1,20 @@
 .checkout-page-item-card {
     display: flex;
-    gap: 8vw;
+    gap: 3vw;
     align-items: center;
     /* border: 2px red solid; */
 }
 
 .checkout-item-p-container {
     width: 200px;
+    font-size: 20px;
+    color: rgb(83, 83, 83);
+    /* border: green solid 2px; */
+    min-width: 100px;
+}
+
+.checkout-item-itemSubtotal-p {
+    width: 150px;
     font-size: 20px;
     color: rgb(83, 83, 83);
     /* border: green solid 2px; */
