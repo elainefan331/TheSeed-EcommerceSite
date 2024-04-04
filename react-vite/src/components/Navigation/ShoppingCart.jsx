@@ -93,23 +93,35 @@ function ShoppingCart() {
       
         {showMenu && (
             <ul className={"shopping-cart-dropdown"} ref={ulRef}>
-                <h1>your shopping cart</h1>
+                <h1>shopping cart</h1>
+                <div className="shopping-cart-items-container shopping-cart-items-column-container">
+                    <span>Product</span>
+                    <span className="shopping-cart-price-column-span">Price</span>
+                    <span className="shopping-cart-buttons-column-span">Qty</span>
+                </div>
                 {cartItems?.map((item, index) => (
-                    <p key={index}>name: {item.productName} | price: {item.productPrice} | quantity: {item.quantity}
-                        <button
-                            onClick={(e) => increaseButtonClick(e, item)}
-                        > 
-                            + 
-                        </button>
-                        <button
-                            onClick={(e) => decreaseButtonClick(e, item)}
-                        > 
-                            - 
-                        </button>
-                    </p>
+                    <div key={index} className="shopping-cart-items-container">
+                        <span>{item?.productName}</span>
+                        <span id="shopping-cart-price-span">${item?.productPrice}</span>
+                        <span id="shopping-cart-buttons-span">
+                            <button
+                                onClick={(e) => increaseButtonClick(e, item)}
+                            > 
+                                + 
+                            </button>
+                            <span id="shopping-cart-quantity-span">{item?.quantity}</span>
+                            <button
+                                onClick={(e) => decreaseButtonClick(e, item)}
+                            > 
+                                - 
+                            </button>
+                        </span>
+                    </div>
 
                 ))}
-                <button onClick={checkoutButtonClick}>Go Checkout</button>
+                <button
+                    className="shopping-cart-checkout-button" 
+                    onClick={checkoutButtonClick}>Go Checkout</button>
             </ul>
         )}
         </div>

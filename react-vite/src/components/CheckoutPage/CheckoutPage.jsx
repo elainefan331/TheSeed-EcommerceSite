@@ -15,7 +15,7 @@ function CheckoutPage() {
 
 
     return (
-        <div>
+        <div className="checkout-page">
             <h1 className="checkout-page-h1">Shopping Cart</h1>
             
             {cartItems?.map((item,index) => (

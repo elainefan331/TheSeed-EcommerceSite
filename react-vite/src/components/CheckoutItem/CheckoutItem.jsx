@@ -1,8 +1,10 @@
 import { useShoppingCart } from "../../context/ShoppingCartContext";
+import { useNavigate, Link } from "react-router-dom";
 import "./CheckoutItem.css"
 
 function CheckoutItem({item}) {
     const { cartItems, setCartItems } = useShoppingCart();
+    const navigate = useNavigate();
     console.log('cartItems=========', cartItems)
 
     const increaseButtonClick = (e, targetItem) => {
@@ -37,11 +39,27 @@ function CheckoutItem({item}) {
         } 
     }
 
+    const removeButtonClick = (e, targetItem) => {
+        e.preventDefault();
+        const existingItem = cartItems.find(item => item.productId === targetItem.productId);
+        if (existingItem) {
+            const updatedCartItems = cartItems.filter(item => item.productId !== targetItem.productId);
+            setCartItems(updatedCartItems);
+        } else {
+            return;
+        }
+    }
+
+    const checkoutItemImageClick = (e, productId) => {
+        e.preventDefault();
+        navigate(`/products/${productId}`)
+    }
+
     return (
-        <div className="checkout-page-item-container">
-            <img className="checkout-item-image" src={item?.productImage} />
+        <div className="checkout-page-item-card">
+            <img className="checkout-item-image" src={item?.productImage} onClick={(e) => checkoutItemImageClick(e, item?.productId)}/>
             <div className="checkout-item-p-container">
-                <p>{item?.productName}</p>
+                <Link className="checkout-item-link" to={`/products/${item?.productId}`}>{item?.productName}</Link>
             </div>
             <div className="checkout-item-p-container">
                 <p>${item?.productPrice}</p>
@@ -57,6 +75,10 @@ function CheckoutItem({item}) {
                     onClick={(e) => decreaseButtonClick(e, item)}
                 >-</button>
             </div>
+            <button
+                className="checkout-item-remove-button"
+                onClick={(e) => removeButtonClick(e, item)}    
+            >remove</button>
         </div>
     )
 }

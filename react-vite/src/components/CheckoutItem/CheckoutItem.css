@@ -1,14 +1,16 @@
-.checkout-page-item-container {
+.checkout-page-item-card {
     display: flex;
     gap: 8vw;
     align-items: center;
+    /* border: 2px red solid; */
 }
 
 .checkout-item-p-container {
     width: 200px;
     font-size: 20px;
     color: rgb(83, 83, 83);
-    /* border: red solid 2px; */
+    /* border: green solid 2px; */
+    min-width: 100px;
 }
 
 .checkout-item-image {
@@ -17,12 +19,20 @@
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 1px 1px 1px gray;
+    cursor: pointer;
+}
+
+.checkout-item-link {
+    text-decoration: none;
+    color: rgb(83, 83, 83);
+    border-bottom: 2px solid rgb(83, 83, 83);
 }
 
 .checkout-item-button-container {
     display: flex;
     gap: 20px;
     align-items: center;
+    /* border: blue 2px solid; */
 }
 
 .checkout-item-button-container > button {
@@ -33,6 +43,15 @@
     border: 1px solid rgb(62, 188, 142);
     box-shadow: 2px 2px 2px gray;
     font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-item-remove-button {
+    padding: 5px 20px;
+    background-color: rgb(62, 188, 142);
+    color: white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
 }
