@@ -6,6 +6,7 @@ import { useModal } from "../../context/Modal";
 import DeleteReviewModal from "../DeleteReviewModal";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 import "./ProductDetailPage.css"
 
 
@@ -16,6 +17,8 @@ function ProductDetailPage() {
     const [reviewPosted, setReviewPosted] = useState(false);
     const [reviewDeleted, setReviewDeleted] = useState(false);
     const [reviewUpdated, setReviewUpdated] = useState(false);
+
+    const { cartItems, setCartItems } = useShoppingCart();
 
 
     const currentUser = useSelector(state => state.session.user)
@@ -53,9 +56,25 @@ function ProductDetailPage() {
         setModalContent(<UpdateReviewModal reviewId={reviewId} reviewText={reviewText} originRating={originRating} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
     }
 
-    const addToCartButtonClick = (e) => {
+    const addToCartButtonClick = (e, productId, productName, productPrice, productImage) => {
         e.preventDefault();
-        window.alert('Feature coming soon');
+        const existingItem = cartItems.find(item => item.productId === productId);
+        if(existingItem) {
+            const updatedCartItems = cartItems.map(item => (
+                item.productId === productId? {...item, quantity: item.quantity + 1 } : item
+            ));
+            setCartItems(updatedCartItems);
+        } else {
+            const newItem = {
+                productId: productId,
+                productName: productName,
+                productPrice: productPrice,
+                productImage: productImage,
+                quantity: 1
+            };
+            setCartItems([...cartItems, newItem])
+        }
+        
     }
 
     return (
@@ -70,7 +89,7 @@ function ProductDetailPage() {
                         <p>{product?.description}</p>
                     </div>
                     <button 
-                    onClick={addToCartButtonClick}
+                    onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
                     className="product-detail-add-to-cart-button">Add To Cart</button>
                 </div>
             </div>

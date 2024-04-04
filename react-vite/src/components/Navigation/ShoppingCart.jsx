@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+
 
 function ShoppingCart() {
     const dispatch = useDispatch();
@@ -8,6 +10,9 @@ function ShoppingCart() {
     const user = useSelector((store) => store.session.user);
     const ulRef = useRef();
     const navigate = useNavigate();
+
+    const { cartItems, setCartItems } = useShoppingCart();
+    // console.log('cartItems=========', cartItems)
 
     
     const toggleMenu = (e) => {
@@ -33,11 +38,48 @@ function ShoppingCart() {
     
     const closeMenu = () => setShowMenu(false);
 
+    const increaseButtonClick = (e, targetItem) => {
+        e.preventDefault();
+        const existingItem = cartItems.find(item => item.productId === targetItem.productId);
+        if(existingItem) {
+            const updatedCartItems = cartItems.map(item => (
+                item.productId === targetItem.productId? {...item, quantity: item.quantity + 1 } : item
+            ));
+            setCartItems(updatedCartItems);
+        } else {
+            return;
+        }
+    }
+
+    const decreaseButtonClick = (e, targetItem) => {
+        e.preventDefault();
+        const existingItem = cartItems.find(item => item.productId === targetItem.productId);
+        // console.log('targetItem========', targetItem)
+        // console.log('existingItem=======', existingItem)
+        
+        if(existingItem) {
+            if(existingItem.quantity === 1) {
+                const updatedCartItems = cartItems.filter(item => item.productId !== targetItem.productId);
+                setCartItems(updatedCartItems);
+            } else {
+                const updatedCartItems = cartItems.map(item => (
+                    item.productId === targetItem.productId && item.quantity > 1? {...item, quantity: item.quantity - 1 } : item
+                ));
+                setCartItems(updatedCartItems);
+            }
+        } 
+    }
+
+    const checkoutButtonClick = (e) => {
+        e.preventDefault();
+        closeMenu();
+        navigate('/products/checkout')
+    }
 
 
     return (
         <div
-            onMouseLeave={closeMenu}
+            // onMouseLeave={closeMenu}
         >
         <button 
             // onClick={toggleMenu} 
@@ -51,7 +93,23 @@ function ShoppingCart() {
       
         {showMenu && (
             <ul className={"shopping-cart-dropdown"} ref={ulRef}>
-                <h1>inside the cart</h1>
+                <h1>your shopping cart</h1>
+                {cartItems?.map((item, index) => (
+                    <p key={index}>name: {item.productName} | price: {item.productPrice} | quantity: {item.quantity}
+                        <button
+                            onClick={(e) => increaseButtonClick(e, item)}
+                        > 
+                            + 
+                        </button>
+                        <button
+                            onClick={(e) => decreaseButtonClick(e, item)}
+                        > 
+                            - 
+                        </button>
+                    </p>
+
+                ))}
+                <button onClick={checkoutButtonClick}>Go Checkout</button>
             </ul>
         )}
         </div>
