@@ -25,6 +25,8 @@ function UpdateProductPage() {
     const currentUser = useSelector(state => state.session.user)
     if(!currentUser) navigate("/")
 
+    const regex = /^\d+(\.\d{0,2})?$/;
+
     useEffect(() => {
         dispatch(getSingleProductThunk(productId))
     }, [dispatch, productId])
@@ -43,7 +45,7 @@ function UpdateProductPage() {
     }
 
 
-    const isDisabled = name.length < 1 || description.length < 20 || !price || price <=0;
+    const isDisabled = name.length < 1 || description.length < 20 || !price || price <=0 || !regex.test(price);
 
     return (
         <div>
@@ -90,6 +92,7 @@ function UpdateProductPage() {
                             />
                             <div>{!price && <p className="update-product-validator">price is required</p>}</div>
                             <div>{price <= 0 && <p className="update-product-validator">price must be greater than 0</p>}</div>
+                            <div>{!regex.test(price) && <p className="update-product-validator">We only accept numbers with up to two decimal positions</p>}</div>
                     </div>
 
                     <div className="update-product-input-container">

@@ -16,6 +16,8 @@ function CreateProductPage() {
     const currentUser = useSelector(state => state.session.user);
     if(!currentUser) navigate('/');
 
+    const regex = /^\d+(\.\d{0,2})?$/;
+
     useEffect(() => {
         const validationObj = {};
 
@@ -33,6 +35,10 @@ function CreateProductPage() {
 
         if(price <= 0) {
             validationObj.minprice = "Price must be greater than 0"
+        }
+
+        if (!regex.test(price)) {
+            validationObj.decimal = "We only accept numbers with up to two decimal positions";
         }
 
         if(!image) {
@@ -64,7 +70,7 @@ function CreateProductPage() {
         }
     }
 
-    const isDisabled = name.length < 1 || description.length < 20 || !price || !image || price <=0;
+    const isDisabled = name.length < 1 || description.length < 20 || !price || !image || price <=0 || !regex.test(price);
 
     return (
         <div>
@@ -111,6 +117,7 @@ function CreateProductPage() {
                             />
                             <div>{errors.price && <p className="create-product-validator">{errors.price}</p>}</div>
                             <div>{errors.minprice && <p className="create-product-validator">{errors.minprice}</p>}</div>
+                            <div>{errors.decimal && <p className="create-product-validator">{errors.decimal}</p>}</div>
                     </div>
 
                     <div className="create-product-input-container">
