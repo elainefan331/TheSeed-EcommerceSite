@@ -7,6 +7,9 @@ import DeleteReviewModal from "../DeleteReviewModal";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";//add
+import LoginFormModal from "../LoginFormModal";//add
+import SignupFormModal from "../SignupFormModal"//add
 import "./ProductDetailPage.css"
 
 
@@ -74,8 +77,9 @@ function ProductDetailPage() {
             };
             setCartItems([...cartItems, newItem])
         }
-        
+        window.alert('your item is added to shopping cart');
     }
+
 
     return (
         <div className="product-show-page-container">
@@ -88,9 +92,17 @@ function ProductDetailPage() {
                         <h3>Description</h3>
                         <p>{product?.description}</p>
                     </div>
-                    <button 
+                    {currentUser? (<button 
                     onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
-                    className="product-detail-add-to-cart-button">Add To Cart</button>
+                    className="product-detail-add-to-cart-button">Add To Cart</button>): (
+                    <div className="login-signup-on-detail-page">
+                        <span><i className="fa-solid fa-leaf"></i></span>
+                        <span> Please Log in / Sign up to bring the spring home!</span>
+                        <OpenModalMenuItem itemText="Log In " modalComponent={<LoginFormModal />} />
+                        <OpenModalMenuItem itemText="Sign Up " modalComponent={<SignupFormModal />} />
+                    </div>
+                    )}
+                    
                 </div>
             </div>
             <div className="all-reviews-container">

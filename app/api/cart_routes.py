@@ -11,7 +11,7 @@ cart_routes = Blueprint('cart_routes', __name__)
 def currentUserShoppingCarts():
     user = current_user.to_dict()
     all_shopping_carts = Cart.query.join(User).filter(User.id == user["id"]).all()
-    return {"orders": [cart.to_dict() for cart in all_shopping_carts]}
+    return {"carts": [cart.to_dict() for cart in all_shopping_carts]}
 
 # create a shopping cart(order)
 # create cart items point to the shopping cart
@@ -50,6 +50,9 @@ def createShoppingCart():
     db.session.commit()
     
     return new_cart.to_dict()
+
+
+
     
     
         

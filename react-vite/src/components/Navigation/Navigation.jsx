@@ -1,10 +1,17 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import ShoppingCart from "./ShoppingCart";
 import "./Navigation.css";
 
 function Navigation() {
-  
+  const currentUser = useSelector(state => state.session.user)
+
+  const ishidden = () => {
+    if(!currentUser) return true;
+    return false;
+  }
+
   return (
     <div className="header">
         
@@ -20,8 +27,8 @@ function Navigation() {
             {/* <a rel='noreferrer' href="https://github.com/elainefan331" className="github-link" target="_blank">Elaine Fan</a> */}
           {/* </div> */}
           <ProfileButton />
+          {ishidden()? null : <ShoppingCart />}
           
-          <ShoppingCart />
           
          
         </div>

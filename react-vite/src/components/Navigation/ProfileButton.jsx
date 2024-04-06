@@ -60,7 +60,7 @@ function ProfileButton() {
     <>
       <button onClick={toggleMenu} className='user-button'>
         {/* <FaUserCircle /> */}
-        <div className='user-icon-container' style={{color: 'rgb(62, 188, 142)', fontSize: "20px", padding: "2px"}}>
+        <div className='user-icon-container' style={{color: 'rgb(62, 188, 142)', fontSize: "25px"}}>
           <i className="fa-solid fa-user"></i>
         </div>
       </button>
@@ -69,8 +69,12 @@ function ProfileButton() {
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <p>{user.username}</p>
-              <p>{user.email}</p>
+              <div className="profileButton-x-container">
+                <i className="fa-regular fa-user"></i>
+                <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
+              </div>
+              <p>Hi, {user.username}</p>
+              {/* <p>{user.email}</p> */}
               <p className="manage-product-p" onClick={manageProducts}>Manage Products</p>
               <p className="order-history-p" onClick={orderHistoryClick}>Order History</p>
               <p>

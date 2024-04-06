@@ -82,8 +82,8 @@ function ShoppingCart() {
             // onMouseLeave={closeMenu}
         >
         <button 
-            // onClick={toggleMenu} 
-            onMouseEnter={toggleMenu}
+            onClick={toggleMenu} 
+            // onMouseEnter={toggleMenu}
             className='shopping-cart-button'
         >
             <div>
@@ -95,7 +95,7 @@ function ShoppingCart() {
             <ul className={"shopping-cart-dropdown"} ref={ulRef}>
                 <div className="shopping-cart-h1-and-x">
                     <h1>shopping cart</h1>
-                    <i onClick={closeMenu} class="fa-solid fa-xmark"></i>
+                    <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
                 </div>
                 
                 <div className="shopping-cart-items-column-container">

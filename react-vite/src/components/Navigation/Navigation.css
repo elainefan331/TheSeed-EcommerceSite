@@ -1,24 +1,25 @@
 .profile-dropdown {
   position: absolute;
   color: rgb(83, 83, 83);
-  top: 55px;
-  right: 25px;
+  /* top: 55px; */
+  /* right: 25px; */
+  top: -10px;
+  right: 20px;
   background-color: white;
   box-shadow: 2px 2px 2px gray;
   /* border: solid 1px rgb(200, 200, 200); */
   min-width: 150px;
   border-radius: 5px;
-  padding: 10px;
-  padding-left: 20px;
+  padding: 20px;
+  padding-left: 30px;
   font-size: 18px;
   z-index: 1;
+  background-color: rgb(247, 244, 239);
 }
 
 .user-button {
-  border: 1px solid gray;
-  border-radius: 25% 25% 25% 25%;
+  border: none;
   background-color: white;
-  box-shadow: 2px 2px 2px gray;
 }
 
 .user-button:hover {
@@ -70,13 +71,14 @@
 .shopping-cart-button {
   border: none;
   background-color: white;
+  cursor: pointer;
 }
 
 .shopping-cart-dropdown {
   position: absolute;
   color: rgb(83, 83, 83);
   top: -10px;
-  right: 60px;
+  right: 20px;
   background-color: rgb(247, 244, 239);
   box-shadow: 2px 2px 2px gray;
   min-width: 150px;
@@ -160,4 +162,9 @@
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.profileButton-x-container {
+  display: flex;
+  justify-content: space-between;
 }
