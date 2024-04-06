@@ -25,12 +25,12 @@ function ProductDetailPage() {
 
 
     const currentUser = useSelector(state => state.session.user)
-    console.log("currentUser in component========>", currentUser)
+    // console.log("currentUser in component========>", currentUser)
     const productState = useSelector(state => state.product)
     const product = productState?.Products[productId]
-    console.log("product in product detail component=======", product)
+    // console.log("product in product detail component=======", product)
     const reviewArray = product?.reviews
-    console.log("reviews in product detail component ========", reviewArray)
+    // console.log("reviews in product detail component ========", reviewArray)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -77,7 +77,32 @@ function ProductDetailPage() {
             };
             setCartItems([...cartItems, newItem])
         }
-        window.alert('your item is added to shopping cart');
+    }
+
+    const decreaseButtonClick = (e, productId) => {
+        e.preventDefault();
+        const existingItem = cartItems.find(item => item.productId === productId);
+        
+        if(existingItem) {
+            if(existingItem.quantity === 1) {
+                const updatedCartItems = cartItems.filter(item => item.productId !== productId);
+                setCartItems(updatedCartItems);
+            } else {
+                const updatedCartItems = cartItems.map(item => (
+                    item.productId === productId && item.quantity > 1? {...item, quantity: item.quantity - 1 } : item
+                ));
+                setCartItems(updatedCartItems);
+            }
+        } 
+    }
+
+    const itemExistInCart = () => {
+        console.log("productId=======", productId)
+        console.log("cartItems======", cartItems)
+        const numericProductId = Number(productId);// cover sting from param() to number
+        const existingItem = cartItems?.find(item => item.productId === numericProductId);
+        console.log("existingItem======", existingItem)
+        return existingItem ? existingItem.quantity : 0;
     }
 
 
@@ -92,16 +117,28 @@ function ProductDetailPage() {
                         <h3>Description</h3>
                         <p>{product?.description}</p>
                     </div>
-                    {currentUser? (<button 
-                    onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
-                    className="product-detail-add-to-cart-button">Add To Cart</button>): (
+                    {!currentUser?  (
                     <div className="login-signup-on-detail-page">
                         <span><i className="fa-solid fa-leaf"></i></span>
                         <span> Please Log in / Sign up to bring the spring home!</span>
                         <OpenModalMenuItem itemText="Log In " modalComponent={<LoginFormModal />} />
                         <OpenModalMenuItem itemText="Sign Up " modalComponent={<SignupFormModal />} />
                     </div>
-                    )}
+                    ):itemExistInCart() === 0 ? (<button 
+                        onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
+                        className="product-detail-add-to-cart-button">Add To Cart</button>):(
+                        <div className="product-detail-button-quantity-container">
+                            <button
+                                onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
+                                className="product-detail-change-quantity-button"
+                            >+</button>
+                            <span>{itemExistInCart()}</span>
+                            <button
+                                onClick={(e) => decreaseButtonClick(e, product?.id)}
+                                className="product-detail-change-quantity-button"
+                            >-</button>
+                        </div>)}
+                    
                     
                 </div>
             </div>

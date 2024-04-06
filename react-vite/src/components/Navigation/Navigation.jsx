@@ -20,6 +20,14 @@ function Navigation() {
             <i className="fa-brands fa-pagelines">The Seed</i>
           </div>
         </NavLink>
+
+        <div className="nav-collections-container">
+          <span>Small</span>
+          <span>Medium</span>
+          <span>Large</span>
+          <span>Blooms</span>
+          <span>Gifts</span>
+        </div>
           
         <div className="github-and-profilebutton-container">
           {/* <div className="github-link-container"> */}

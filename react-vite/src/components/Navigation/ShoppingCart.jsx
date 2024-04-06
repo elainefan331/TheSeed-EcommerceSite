@@ -14,6 +14,12 @@ function ShoppingCart() {
     const { cartItems, setCartItems } = useShoppingCart();
     // console.log('cartItems=========', cartItems)
 
+    const subtotal = cartItems.reduce((total, item) => {
+        return total + (parseFloat(item.productPrice) * item.quantity);
+    }, 0);
+
+    const formattedSubtotal = subtotal.toFixed(2);
+
     
     const toggleMenu = (e) => {
         e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -97,10 +103,11 @@ function ShoppingCart() {
                     <h1>shopping cart</h1>
                     <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
                 </div>
-                
+                {cartItems?.length !== 0 ?(
+                <>
                 <div className="shopping-cart-items-column-container">
                     <span>Product</span>
-                    <span className="shopping-cart-price-column-span">Price</span>
+                    <span className="shopping-cart-price-column-span">Unit Price</span>
                     <span className="shopping-cart-buttons-column-span">Qty</span>
                 </div>
                 {cartItems?.map((item, index) => (
@@ -123,9 +130,12 @@ function ShoppingCart() {
                     </div>
 
                 ))}
+                <p>Subtotal: ${formattedSubtotal}</p>
                 <button
                     className="shopping-cart-checkout-button" 
-                    onClick={checkoutButtonClick}>Go Checkout</button>
+                    onClick={checkoutButtonClick}>Go Checkout
+                </button>
+                </>) : <h4><i className="fa-solid fa-leaf"></i> your cart is empty</h4>}
             </ul>
         )}
         </div>

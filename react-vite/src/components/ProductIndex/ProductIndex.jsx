@@ -40,13 +40,13 @@ function ProductIndex() {
                             onClick={outdoorButtonClick}
                             className="landing-page-outdoor-collection-button"
                         >
-                            Outdoor Collection
+                            Shop Blooms
                         </button>
                         <button 
                             className="landing-page-new-arrivals-button"
                             onClick={() => newArrivalsRef.current.scrollIntoView({ behavior: 'smooth' })}
                         >
-                            Shop New Arrivals
+                            New Arrivals
                         </button>
                     </div>
                 </div>
@@ -74,8 +74,8 @@ function ProductIndex() {
                     </div>
 
                     <div className="category-card-container" onClick={smallClick}>
-                        <img src="https://live.staticflickr.com/65535/53634078256_e8bfe73aee_c.jpg" className="category-img" />
-                        <h3>Holiday Collection</h3>
+                        <img src="https://live.staticflickr.com/65535/53635707631_74170b03ee_c.jpg" className="category-img" />
+                        <h3>Blooms</h3>
                     </div>
 
                     <div className="category-card-container" onClick={smallClick}>
