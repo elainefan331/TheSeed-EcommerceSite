@@ -42,7 +42,7 @@ def seed_products():
         user_id = 2,
         name = "Scindapsus Pictus 'Trebie'", 
         description = "This elegant climber, with heart-shaped leaves adorned in a silver sheen, is a testament to nature's beauty. Ideal for hanging baskets or as a climbing plant with a little support, it thrives in indirect light and requires minimal watering, making it a splendid choice for adding texture to your indoor garden.", 
-        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/f0bcbb0379784fa4afa9f0b48e90aa83.jpg', 
+        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/0dce708448904610a5b7136453682ceb.jpg', 
         price = 79,
         stock_quantity = 100,
         size = 'Medium'
@@ -78,7 +78,7 @@ def seed_products():
         user_id = 2,
         name = "Dracaena Rikki", 
         description = "The Dracaena Rikki is celebrated for its long, striped leaves and its ability to adapt to various indoor conditions. It's a low-maintenance plant that purifies the air, thriving in indirect light and requiring only occasional watering, perfect for adding greenery to your workspace or living area.", 
-        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/f0bcbb0379784fa4afa9f0b48e90aa83.jpg', 
+        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/1b22b396480644daafb652acce3dde79.jpg', 
         price = 128,
         stock_quantity = 100,
         size = 'Large'
@@ -132,7 +132,7 @@ def seed_products():
         user_id = 2,
         name = "Monstera Minima", 
         description = "The Monstera Minima is a compact, fast-growing plant with distinctive split leaves. It thrives in bright, indirect light and regular watering, making it an ideal plant for those who love the Monst", 
-        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/f0bcbb0379784fa4afa9f0b48e90aa83.jpg', 
+        image = 'https://rhythm-realm-img-bucket.s3.us-east-2.amazonaws.com/f07fc1fae7c94afa822c20a3616aa027.jpg', 
         price = 49,
         stock_quantity = 100,
         size = 'Small'
