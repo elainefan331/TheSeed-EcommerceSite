@@ -86,7 +86,7 @@ def createProduct():
     
 
 # edit(update) a product by product id
-# aws not setting yet
+
 @product_routes.route("/<int:id>", methods=["PUT"])
 @login_required
 def updateProduct(id):
@@ -146,7 +146,7 @@ def deleteProduct(id):
     if target_product:
         db.session.delete(target_product)
         db.session.commit()
-        # remove_file_from_s3(target_product.image) # delete the file on aws
+        remove_file_from_s3(target_product.image) # delete the file on aws
         return {"message": "Successful delete!"}, 200
     
     

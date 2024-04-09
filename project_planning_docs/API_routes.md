@@ -35,3 +35,24 @@
 
 ### Delete a review
 * `DELETE /api/reviews/:reviewId`
+
+## Shopping-carts
+
+### Get all items in the shopping-cart of the current user
+* `GET /api/carts/:cartId`
+
+### Add a product to a shopping-cart based on the cart's id
+* `POST /api/carts/:cartId/items`
+
+### Update quantity of a product in the cart
+* `PUT /api/items/itemId`
+
+### Remove a product from a shopping-cart
+* `DELETE /api/items/:itemId`
+
+### complete the purchase of current shopping-cart
+* `POST /api/carts/:cartId/checkout`
+
+
+
+

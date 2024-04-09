@@ -25,7 +25,7 @@ function UpdateProductPage() {
     const currentUser = useSelector(state => state.session.user)
     if(!currentUser) navigate("/")
 
-    const regex = /^\d+(\.\d{0,2})?$/;
+    const regex = /^\d+(\.\d{0,2})?$/;//add
 
     useEffect(() => {
         dispatch(getSingleProductThunk(productId))
@@ -45,7 +45,7 @@ function UpdateProductPage() {
     }
 
 
-    const isDisabled = name.length < 1 || description.length < 20 || !price || price <=0 || !regex.test(price);
+    const isDisabled = name.length < 1 || description.length < 20 || !price || price <=0 || !regex.test(price);//add
 
     return (
         <div>

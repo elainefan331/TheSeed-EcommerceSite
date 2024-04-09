@@ -1,8 +1,8 @@
 import { useModal } from "../../context/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import StarsRatingInput from "../StarsRatingInput";
-import { updateReviewThunk, getSingleReviewThunk } from "../../redux/reviews";
+import { updateReviewThunk } from "../../redux/reviews";
 import "./UpdateReviewModal.css"
 
 
@@ -12,7 +12,7 @@ function UpdateReviewModal({reviewId, reviewText, originRating, reviewUpdated}) 
     // const reviewState = useSelector(state => state.review)
     // console.log("reviewState in component========", reviewState)
     // const targetReview = reviewState[reviewId]
-    console.log("review in component========", reviewText)
+    // console.log("review in component========", reviewText)
 
     // const [review, setReview] = useState(targetReview?.review || "")
     const [review, setReview] = useState(reviewText)

@@ -1,0 +1,16 @@
+.category-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(83, 83, 83);
+}
+
+.category-page-products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3vw;
+    row-gap: 2vw;
+    width: 80%;
+    margin-top: 20px;
+    justify-items: center;
+}

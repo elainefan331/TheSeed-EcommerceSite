@@ -107,8 +107,6 @@ export const deleteProductThunk = (productId) => async (dispatch) => {
 }
 
 
-
-
 // Reducer
 const initialState = { Products: {}}
 

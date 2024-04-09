@@ -1,0 +1,56 @@
+.history-cart-card {
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-bottom: 5vh;
+    background-color: rgb(247, 244, 239);
+    /* border: 2px red solid; */
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    min-width: 800px;
+    max-width: 1000px;
+}
+
+.order-number-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 0px;
+}
+
+.history-cart-card > h3 {
+    margin-top: 0px;
+}
+
+.history-cart-card-info-container {
+    /* border: green solid 2px; */
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    margin: 8px;
+    background-color: white;
+}
+
+.history-cart-item-p {
+    width: 200px;
+    min-width: 150px;
+    color: rgb(83, 83, 83);
+    /* border: 2px green solid; */
+}
+
+.buy-again-button {
+    padding: 5px 10px;
+    background-color: rgb(62, 188, 142);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-again-link {
+    text-decoration: none;
+    color: white
+}
