@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import { useShoppingCart } from "../../context/ShoppingCartContext";//add
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function ProfileButton() {
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
   const navigate = useNavigate();
-
+  const { setCartItems } = useShoppingCart();//add
  
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -39,6 +40,7 @@ function ProfileButton() {
 
   const logout = (e) => {
     e.preventDefault();
+    setCartItems([])
     dispatch(thunkLogout());
     closeMenu();
     navigate('/');
