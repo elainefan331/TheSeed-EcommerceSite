@@ -1,5 +1,6 @@
 .order-history-page {
     color: rgb(83, 83, 83);
+    min-height: 50vh;
 }
 
 .order-history-page > h1 {

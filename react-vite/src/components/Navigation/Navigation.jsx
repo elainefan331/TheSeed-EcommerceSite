@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import ShoppingCart from "./ShoppingCart";
@@ -22,11 +22,11 @@ function Navigation() {
         </NavLink>
 
         <div className="nav-collections-container">
-          <span>Small</span>
-          <span>Medium</span>
-          <span>Large</span>
-          <span>Blooms</span>
-          <span>Gifts</span>
+          <span><Link className="nav-collection-link" to="/small">Small</Link></span>
+          <span><Link className="nav-collection-link" to="/medium">Medium</Link></span>
+          <span><Link className="nav-collection-link" to="/large">Large</Link></span>
+          <span><Link className="nav-collection-link" to="/blooms">Blooms</Link></span>
+          <span><Link className="nav-collection-link" to="/gifts">Gifts</Link></span>
         </div>
           
         <div className="github-and-profilebutton-container">

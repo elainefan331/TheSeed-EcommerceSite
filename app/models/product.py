@@ -47,6 +47,7 @@ class Product(db.Model):
             'price': self.price,
             'user': self.user,
             'reviews': self.reviews,
+            'size': self.size,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

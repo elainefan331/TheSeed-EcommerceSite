@@ -41,7 +41,7 @@
 
 #product-item-name {
     color: rgb(83, 83, 83);
-    font-size: 25px;
+    font-size: clamp(12px, 2.5vw, 25px);
     /* border: 2px red solid; */
     margin-bottom: 0px;
     margin-top: 0px;
@@ -51,5 +51,5 @@
     color: rgb(83, 83, 83);
     /* border: 2px green solid; */
     margin-top: 10px;
-    font-size: 20px;
+    font-size: clamp(12px, 2.5vw, 20px);
 }

@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { getAllProductsThunk } from "../../redux/product";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ProductIndexItem from "../ProductIndexItem";
 import "./ProductIndex.css"
 
 function ProductIndex() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const productState = useSelector(state => state.product);
     console.log("productState in component=========>", productState)
 
@@ -21,12 +22,32 @@ function ProductIndex() {
 
     const outdoorButtonClick = (e) => {
         e.preventDefault();
-        window.alert('Feature coming soon');
+        navigate("/blooms")
     }
 
     const smallClick = (e) => {
         e.preventDefault();
-        window.alert('Feature coming soon');
+        navigate("/small")
+    }
+
+    const mediumClick = (e) => {
+        e.preventDefault();
+        navigate("/medium")
+    }
+
+    const largeClick = (e) => {
+        e.preventDefault();
+        navigate("/large")
+    }
+
+    const bloomsClick = (e) => {
+        e.preventDefault();
+        navigate("/blooms")
+    }
+
+    const giftsClick = (e) => {
+        e.preventDefault();
+        navigate("/gifts")
     }
     
     return (
@@ -63,22 +84,22 @@ function ProductIndex() {
                         <h3>Small Collection</h3>
                     </div>
 
-                    <div className="category-card-container" onClick={smallClick}>
+                    <div className="category-card-container" onClick={mediumClick}>
                         <img src="https://live.staticflickr.com/65535/53634076451_f92b4917f5_c.jpg" className="category-img" />
                         <h3>Medium Collection</h3>
                     </div>
 
-                    <div className="category-card-container" onClick={smallClick}>
+                    <div className="category-card-container" onClick={largeClick}>
                         <img src="https://live.staticflickr.com/65535/53634077481_f1c5e0d8b7_c.jpg" className="category-img" />
                         <h3>Large Collection</h3>
                     </div>
 
-                    <div className="category-card-container" onClick={smallClick}>
+                    <div className="category-card-container" onClick={bloomsClick}>
                         <img src="https://live.staticflickr.com/65535/53635707631_74170b03ee_c.jpg" className="category-img" />
                         <h3>Blooms</h3>
                     </div>
 
-                    <div className="category-card-container" onClick={smallClick}>
+                    <div className="category-card-container" onClick={giftsClick}>
                         <img src="https://live.staticflickr.com/65535/53634295633_085dd2cfec_c.jpg" className="category-img" />
                         <h3>Gifts</h3>
                     </div>
