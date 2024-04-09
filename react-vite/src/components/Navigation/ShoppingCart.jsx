@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 
 function ShoppingCart() {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    const user = useSelector((store) => store.session.user);
+    // const user = useSelector((store) => store.session.user);
     const ulRef = useRef();
     const navigate = useNavigate();
 
