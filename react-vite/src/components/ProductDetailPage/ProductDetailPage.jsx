@@ -6,6 +6,10 @@ import { useModal } from "../../context/Modal";
 import DeleteReviewModal from "../DeleteReviewModal";
 import CreateReviewModal from "../CreateReviewModal";
 import UpdateReviewModal from "../UpdateReviewModal";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";//add
+import LoginFormModal from "../LoginFormModal";//add
+import SignupFormModal from "../SignupFormModal"//add
 import "./ProductDetailPage.css"
 
 
@@ -17,14 +21,16 @@ function ProductDetailPage() {
     const [reviewDeleted, setReviewDeleted] = useState(false);
     const [reviewUpdated, setReviewUpdated] = useState(false);
 
+    const { cartItems, setCartItems } = useShoppingCart();
+
 
     const currentUser = useSelector(state => state.session.user)
-    console.log("currentUser in component========>", currentUser)
+    // console.log("currentUser in component========>", currentUser)
     const productState = useSelector(state => state.product)
     const product = productState?.Products[productId]
-    console.log("product in product detail component=======", product)
+    // console.log("product in product detail component=======", product)
     const reviewArray = product?.reviews
-    console.log("reviews in product detail component ========", reviewArray)
+    // console.log("reviews in product detail component ========", reviewArray)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -53,10 +59,52 @@ function ProductDetailPage() {
         setModalContent(<UpdateReviewModal reviewId={reviewId} reviewText={reviewText} originRating={originRating} reviewUpdated={() => setReviewUpdated(prev => !prev)}/>)
     }
 
-    const addToCartButtonClick = (e) => {
+    const addToCartButtonClick = (e, productId, productName, productPrice, productImage) => {
         e.preventDefault();
-        window.alert('Feature coming soon');
+        const existingItem = cartItems.find(item => item.productId === productId);
+        if(existingItem) {
+            const updatedCartItems = cartItems.map(item => (
+                item.productId === productId? {...item, quantity: item.quantity + 1 } : item
+            ));
+            setCartItems(updatedCartItems);
+        } else {
+            const newItem = {
+                productId: productId,
+                productName: productName,
+                productPrice: productPrice,
+                productImage: productImage,
+                quantity: 1
+            };
+            setCartItems([...cartItems, newItem])
+        }
     }
+
+    const decreaseButtonClick = (e, productId) => {
+        e.preventDefault();
+        const existingItem = cartItems.find(item => item.productId === productId);
+        
+        if(existingItem) {
+            if(existingItem.quantity === 1) {
+                const updatedCartItems = cartItems.filter(item => item.productId !== productId);
+                setCartItems(updatedCartItems);
+            } else {
+                const updatedCartItems = cartItems.map(item => (
+                    item.productId === productId && item.quantity > 1? {...item, quantity: item.quantity - 1 } : item
+                ));
+                setCartItems(updatedCartItems);
+            }
+        } 
+    }
+
+    const itemExistInCart = () => {
+        console.log("productId=======", productId)
+        console.log("cartItems======", cartItems)
+        const numericProductId = Number(productId);// cover sting from param() to number
+        const existingItem = cartItems?.find(item => item.productId === numericProductId);
+        console.log("existingItem======", existingItem)
+        return existingItem ? existingItem.quantity : 0;
+    }
+
 
     return (
         <div className="product-show-page-container">
@@ -69,9 +117,29 @@ function ProductDetailPage() {
                         <h3>Description</h3>
                         <p>{product?.description}</p>
                     </div>
-                    <button 
-                    onClick={addToCartButtonClick}
-                    className="product-detail-add-to-cart-button">Add To Cart</button>
+                    {!currentUser?  (
+                    <div className="login-signup-on-detail-page">
+                        <span><i className="fa-solid fa-leaf"></i></span>
+                        <span> Please Log in / Sign up to bring the spring home!</span>
+                        <OpenModalMenuItem itemText="Log In " modalComponent={<LoginFormModal />} />
+                        <OpenModalMenuItem itemText="Sign Up " modalComponent={<SignupFormModal />} />
+                    </div>
+                    ):itemExistInCart() === 0 ? (<button 
+                        onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
+                        className="product-detail-add-to-cart-button">Add To Cart</button>):(
+                        <div className="product-detail-button-quantity-container">
+                            <button
+                                onClick={(e) => addToCartButtonClick(e, product?.id, product?.name, product?.price, product?.image)}
+                                className="product-detail-change-quantity-button"
+                            >+</button>
+                            <span>{itemExistInCart()}</span>
+                            <button
+                                onClick={(e) => decreaseButtonClick(e, product?.id)}
+                                className="product-detail-change-quantity-button"
+                            >-</button>
+                        </div>)}
+                    
+                    
                 </div>
             </div>
             <div className="all-reviews-container">

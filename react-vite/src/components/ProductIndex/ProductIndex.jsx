@@ -23,6 +23,11 @@ function ProductIndex() {
         e.preventDefault();
         window.alert('Feature coming soon');
     }
+
+    const smallClick = (e) => {
+        e.preventDefault();
+        window.alert('Feature coming soon');
+    }
     
     return (
         <div className="landing-page-whole-container">
@@ -35,19 +40,58 @@ function ProductIndex() {
                             onClick={outdoorButtonClick}
                             className="landing-page-outdoor-collection-button"
                         >
-                            Outdoor Collection
+                            Shop Blooms
                         </button>
                         <button 
                             className="landing-page-new-arrivals-button"
                             onClick={() => newArrivalsRef.current.scrollIntoView({ behavior: 'smooth' })}
                         >
-                            Shop New Arrivals
+                            New Arrivals
                         </button>
                     </div>
                 </div>
             </div>
-            <section ref={newArrivalsRef}>
-                <h1 className="landing-page-h1">New Arrivals</h1>
+                
+            <section className="category-section">
+                <div className="new-arrival-h1-container">
+                    <h1 className="landing-page-h1">Most Popular Categories</h1>
+                </div>
+
+                <div className="category-container">
+                    <div className="category-card-container" onClick={smallClick}>
+                        <img src="https://live.staticflickr.com/65535/53633183882_574eb7cb50_c.jpg" className="category-img" />
+                        <h3>Small Collection</h3>
+                    </div>
+
+                    <div className="category-card-container" onClick={smallClick}>
+                        <img src="https://live.staticflickr.com/65535/53634076451_f92b4917f5_c.jpg" className="category-img" />
+                        <h3>Medium Collection</h3>
+                    </div>
+
+                    <div className="category-card-container" onClick={smallClick}>
+                        <img src="https://live.staticflickr.com/65535/53634077481_f1c5e0d8b7_c.jpg" className="category-img" />
+                        <h3>Large Collection</h3>
+                    </div>
+
+                    <div className="category-card-container" onClick={smallClick}>
+                        <img src="https://live.staticflickr.com/65535/53635707631_74170b03ee_c.jpg" className="category-img" />
+                        <h3>Blooms</h3>
+                    </div>
+
+                    <div className="category-card-container" onClick={smallClick}>
+                        <img src="https://live.staticflickr.com/65535/53634295633_085dd2cfec_c.jpg" className="category-img" />
+                        <h3>Gifts</h3>
+                    </div>
+                </div>
+
+            </section>
+
+            <section ref={newArrivalsRef} className="new-arrival-section">
+                <div className="new-arrival-h1-container">
+                    <h1 className="landing-page-h1">New Arrivals</h1>
+                </div>
+
+                
                 <div className="products-container">
                     {products?.map((product) => {
                         return (
@@ -57,6 +101,7 @@ function ProductIndex() {
                         )
                     })}
                 </div>
+                
             </section>
         </div>
     )
