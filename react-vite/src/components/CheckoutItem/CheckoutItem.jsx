@@ -64,7 +64,7 @@ function CheckoutItem({item}) {
             <div className="checkout-item-p-container">
                 <Link className="checkout-item-link" to={`/products/${item?.productId}`}>{item?.productName}</Link>
             </div>
-            <div className="checkout-item-p-container">
+            <div className="checkout-item-p-container checkout-item-unit-price-container">
                 <p>${item?.productPrice} / per item</p>
             </div>
             <div className="checkout-item-button-container">

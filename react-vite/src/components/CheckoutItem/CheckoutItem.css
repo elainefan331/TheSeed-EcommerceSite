@@ -24,6 +24,7 @@
 .checkout-item-image {
     width: 200px;
     height: 200px;
+    min-width: 150px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 1px 1px 1px gray;
@@ -67,4 +68,32 @@
 .checkout-item-quantity-container {
     font-size: large;
     color: rgb(83, 83, 83);
+}
+
+@media (max-width: 1250px) {
+    .checkout-page-item-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+        border-bottom: 1px gray solid;
+        align-items: center;
+    }
+    .checkout-item-remove-button {
+        width: 100px;
+        margin-bottom: 1vh;
+    }
+
+    .checkout-item-unit-price-container {
+        display: none;
+    }
+}
+
+@media (max-width:600px) {
+    .checkout-page-item-card {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        /* border: 2px green solid; */
+        border-bottom: 1px gray solid;
+    } 
 }

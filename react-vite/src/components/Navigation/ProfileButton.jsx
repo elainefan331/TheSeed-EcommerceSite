@@ -67,8 +67,8 @@ function ProfileButton() {
         </div>
       </button>
       
-      {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+      {showMenu ? (
+        <ul className={"profile-dropdown profile-dropdown-visible"} ref={ulRef}>
           {user ? (
             <>
               <div className="profileButton-x-container">
@@ -98,7 +98,37 @@ function ProfileButton() {
             </>
           )}
         </ul>
-      )}
+      ): (
+        <ul className={"profile-dropdown profile-dropdown-hidden"} ref={ulRef}>
+          {user ? (
+            <>
+              <div className="profileButton-x-container">
+                <i className="fa-regular fa-user"></i>
+                <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
+              </div>
+              <p>Hi, {user.username}</p>
+              {/* <p>{user.email}</p> */}
+              <p className="manage-product-p" onClick={manageProducts}>Manage Products</p>
+              <p className="order-history-p" onClick={orderHistoryClick}>Order History</p>
+              <p>
+                <button className="log-out-button" onClick={logout}>Log Out</button>
+              </p>
+            </>
+          ) : (
+            <>
+              <OpenModalMenuItem
+                itemText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+              <OpenModalMenuItem
+                itemText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
+            </>
+          )}
+        </ul>)}
     </>
   );
 }

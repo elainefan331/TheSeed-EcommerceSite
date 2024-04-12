@@ -7,3 +7,9 @@
     background-color: rgb(247, 244, 239);
     padding: 15px;
 }
+
+@media (max-width:430px) {
+    .footer {
+        font-size: 12px;
+    }
+}

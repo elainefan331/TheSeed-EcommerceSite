@@ -81,17 +81,17 @@ function ProductIndex() {
                 <div className="category-container">
                     <div className="category-card-container" onClick={smallClick}>
                         <img src="https://live.staticflickr.com/65535/53633183882_574eb7cb50_c.jpg" className="category-img" />
-                        <h3>Small Collection</h3>
+                        <h3>Small</h3>
                     </div>
 
                     <div className="category-card-container" onClick={mediumClick}>
                         <img src="https://live.staticflickr.com/65535/53634076451_f92b4917f5_c.jpg" className="category-img" />
-                        <h3>Medium Collection</h3>
+                        <h3>Medium</h3>
                     </div>
 
                     <div className="category-card-container" onClick={largeClick}>
                         <img src="https://live.staticflickr.com/65535/53634077481_f1c5e0d8b7_c.jpg" className="category-img" />
-                        <h3>Large Collection</h3>
+                        <h3>Large</h3>
                     </div>
 
                     <div className="category-card-container" onClick={bloomsClick}>
@@ -103,6 +103,12 @@ function ProductIndex() {
                         <img src="https://live.staticflickr.com/65535/53634295633_085dd2cfec_c.jpg" className="category-img" />
                         <h3>Gifts</h3>
                     </div>
+
+                    <div className="category-card-container no-display-pic" onClick={() => newArrivalsRef.current.scrollIntoView({ behavior: 'smooth' })}>
+                        <img src="https://live.staticflickr.com/65535/53649391131_eb206bf03b_c.jpg" className="category-img" />
+                        <h3>New Arrivals</h3>
+                    </div>
+
                 </div>
 
             </section>

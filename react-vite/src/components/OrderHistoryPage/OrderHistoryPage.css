@@ -6,3 +6,9 @@
 .order-history-page > h1 {
     margin-left: 15vw;
 }
+
+@media (max-width:1050px) {
+    .order-history-page > h1 {
+        margin-left: 5vw;
+    }
+}

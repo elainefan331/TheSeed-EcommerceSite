@@ -145,7 +145,7 @@ function ProductDetailPage() {
             <div className="all-reviews-container">
                 <div className="review-rating-count-container">
                     {product?.avg_rating > 0 ? <span><i style={{color: "rgb(62, 188, 142)"}} className="fa-solid fa-star">{product?.avg_rating}</i></span> : <h3>be the first one to give a review!</h3>}
-                    <span>{product?.num_reviews > 1 ? `${product?.num_reviews} reviews`: product?.num_reviews == 0 ? null : `${product?.num_reviews} review`}</span>
+                    <span id="reviews-counts-span">{product?.num_reviews > 1 ? `${product?.num_reviews} reviews`: product?.num_reviews == 0 ? null : `${product?.num_reviews} review`}</span>
                 </div>
 
                 <div className="post-your-review-container">
