@@ -164,11 +164,11 @@
   border-bottom: 1px solid rgb(190, 186, 186); 
 }
 
-.shopping-cart-items-container > span {
+.shopping-cart-items-container > span,
+.shopping-cart-product-name-img-container {
   width: 120px;
-  /* border: 2px red solid; */
+  /* border: 2px green solid; */
   min-height: 50px;
-  /* border-bottom: 1px solid rgb(190, 186, 186); */
 }
 
 .shopping-cart-items-column-container {
@@ -179,6 +179,7 @@
 
 .shopping-cart-items-column-container > span {
   width: 120px;
+  /* border: solid red 2px; */
 }
 
 
