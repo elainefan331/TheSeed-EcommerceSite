@@ -81,6 +81,12 @@ function ShoppingCart() {
         navigate('/products/checkout')
     }
 
+    const formattedItemSubtotalFunc = (price, quantity) => {
+        const total = price * quantity;
+        const formattedTotal = total.toFixed(2);
+        return formattedTotal;
+    }
+
 
     return (
         <div
@@ -96,8 +102,50 @@ function ShoppingCart() {
             </div>
         </button>
       
-        {showMenu && (
-            <ul className={"shopping-cart-dropdown"} ref={ulRef}>
+        {showMenu ? (
+            <ul className={"shopping-cart-dropdown shopping-cart-dropdown-visible"} ref={ulRef}>
+                <div className="shopping-cart-h1-and-x">
+                    <h1>shopping cart</h1>
+                    <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
+                </div>
+                {cartItems?.length !== 0 ?(
+                <>
+                <div className="shopping-cart-items-column-container">
+                    <span>Product</span>
+                    <span className="shopping-cart-price-column-span">Item Total</span>
+                    <span className="shopping-cart-buttons-column-span">Qty</span>
+                </div>
+                {cartItems?.map((item, index) => (
+                    <div key={index} className="shopping-cart-items-container">
+                        <div className="shopping-cart-product-name-img-container">
+                            <span>{item?.productName}</span>
+                            <img src={item?.productImage} style={{width: "80px", height: "100px", borderRadius: "5px"}}/>
+                        </div>
+                        <span id="shopping-cart-price-span">${formattedItemSubtotalFunc(item?.productPrice, item?.quantity)}</span>
+                        <span id="shopping-cart-buttons-span">
+                            <button
+                                onClick={(e) => increaseButtonClick(e, item)}
+                            > 
+                                + 
+                            </button>
+                            <span id="shopping-cart-quantity-span">{item?.quantity}</span>
+                            <button
+                                onClick={(e) => decreaseButtonClick(e, item)}
+                            > 
+                                - 
+                            </button>
+                        </span>
+                    </div>
+
+                ))}
+                <p>Subtotal: ${formattedSubtotal}</p>
+                <button
+                    className="shopping-cart-checkout-button" 
+                    onClick={checkoutButtonClick}>Go Checkout
+                </button>
+                </>) : <h4><i className="fa-solid fa-leaf"></i> your cart is empty</h4>}
+            </ul>
+        ): <ul className={"shopping-cart-dropdown shopping-cart-dropdown-hidden"} ref={ulRef}>
                 <div className="shopping-cart-h1-and-x">
                     <h1>shopping cart</h1>
                     <i onClick={closeMenu} className="fa-solid fa-xmark"></i>
@@ -135,8 +183,7 @@ function ShoppingCart() {
                     onClick={checkoutButtonClick}>Go Checkout
                 </button>
                 </>) : <h4><i className="fa-solid fa-leaf"></i> your cart is empty</h4>}
-            </ul>
-        )}
+            </ul>}
         </div>
     )
 }

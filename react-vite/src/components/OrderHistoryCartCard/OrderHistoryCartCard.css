@@ -48,9 +48,49 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .buy-again-link {
     text-decoration: none;
-    color: white
+    color: white;
+}
+
+@media (max-width:1050px) {
+    .history-cart-card {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        min-width: 0px;
+    } 
+
+    .order-number-date-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* gap: 20px; */
+        margin-bottom: 0px;
+        /* border: 2px red solid; */
+    }
+
+    .history-cart-card-info-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 10px;
+    }
+}
+
+@media (max-width:750px) {
+    .history-cart-card-info-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+    }
+}
+
+@media (max-width:500px) {
+    .history-cart-card-info-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 10px;
+    }
 }

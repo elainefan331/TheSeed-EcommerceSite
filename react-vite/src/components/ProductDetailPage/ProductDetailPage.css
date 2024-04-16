@@ -123,3 +123,44 @@
     font-size: 15px;
     cursor: pointer;
 }
+
+@media (max-width:430px) {
+    .product-details-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 3vh;
+    }
+
+    .product-details-container > img {
+        width: 100%;
+        height: 50vh;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    #product-detail-name,
+    #product-detail-price {
+        padding-left: 5vw;
+    }
+
+    .product-detail-description-container {
+        padding-left: 5vw;
+        width: 90%;
+    }
+
+    .post-your-review-button {
+        padding: 10px 30px;
+    }
+
+    .product-detail-add-to-cart-button {
+        align-self: center;
+    }
+
+    .product-detail-button-quantity-container {
+        align-self: center;
+    }
+
+    #reviews-counts-span {
+        padding-left: 5vw;
+    }
+}

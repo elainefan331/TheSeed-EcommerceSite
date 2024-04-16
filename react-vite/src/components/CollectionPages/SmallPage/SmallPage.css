@@ -8,9 +8,24 @@
 .category-page-products-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 3vw;
+    column-gap: 1vw;
     row-gap: 2vw;
     width: 80%;
     margin-top: 20px;
     justify-items: center;
+    /* border: 2px green solid; */
+}
+
+@media (max-width: 1000px) {
+    .category-page-products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:500px) {
+    .category-page-products-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

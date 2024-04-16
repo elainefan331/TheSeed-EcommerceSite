@@ -98,7 +98,7 @@ function UpdateProductPage() {
                     <div className="update-product-input-container">
                         <div>
                             {previewUrl && <p>Product Image</p>}
-                            {previewUrl && <img src={previewUrl} alt="Product Image" style={{ width: '200px', height: '200px' }} />}
+                            {previewUrl && <img src={previewUrl} alt="Product Image" style={{ width: '200px', height: '200px', borderRadius: "10px" }} />}
                         </div>
                         <label>
                             Change Product Image

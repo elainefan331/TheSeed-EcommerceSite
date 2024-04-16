@@ -18,7 +18,7 @@ function OrderHistoryCartCard({cart}) {
             {cart.items?.map((item, index) => {
                 return (
                     <div key={index} className="history-cart-card-info-container">
-                        <img src={item.product?.image} style={{width: "100px", height: "100px"}} />
+                        <img src={item.product?.image} style={{width: "100px", height: "100px", minWidth: "100px"}} />
                         <p className="history-cart-item-p">{item.product?.name}</p>
                         <p className="history-cart-item-p">${item.product?.price} / per item</p>
                         <p className="history-cart-item-p">Qty: {item?.quantity}</p>

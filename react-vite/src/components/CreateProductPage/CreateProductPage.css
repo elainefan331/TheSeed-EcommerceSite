@@ -9,7 +9,7 @@
 
 .create-product-form-container {
     display: grid;
-    width: 400px;
+    max-width: 400px;
     text-align: start;
     margin: auto;
 }
@@ -17,7 +17,8 @@
 .create-product-input-container {
     display: grid;
     gap: 2px;
-    width: 400px;
+    /* width: 400px; */
+    width: 100%;
     text-align: start;
     margin-bottom: 2vw;
     color: rgb(83, 83, 83);
