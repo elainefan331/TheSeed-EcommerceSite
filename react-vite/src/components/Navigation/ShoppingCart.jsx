@@ -81,6 +81,12 @@ function ShoppingCart() {
         navigate('/products/checkout')
     }
 
+    const formattedItemSubtotalFunc = (price, quantity) => {
+        const total = price * quantity;
+        const formattedTotal = total.toFixed(2);
+        return formattedTotal;
+    }
+
 
     return (
         <div
@@ -106,13 +112,16 @@ function ShoppingCart() {
                 <>
                 <div className="shopping-cart-items-column-container">
                     <span>Product</span>
-                    <span className="shopping-cart-price-column-span">Unit Price</span>
+                    <span className="shopping-cart-price-column-span">Item Total</span>
                     <span className="shopping-cart-buttons-column-span">Qty</span>
                 </div>
                 {cartItems?.map((item, index) => (
                     <div key={index} className="shopping-cart-items-container">
-                        <span>{item?.productName}</span>
-                        <span id="shopping-cart-price-span">${item?.productPrice}</span>
+                        <div className="shopping-cart-product-name-img-container">
+                            <span>{item?.productName}</span>
+                            <img src={item?.productImage} style={{width: "80px", height: "100px", borderRadius: "5px"}}/>
+                        </div>
+                        <span id="shopping-cart-price-span">${formattedItemSubtotalFunc(item?.productPrice, item?.quantity)}</span>
                         <span id="shopping-cart-buttons-span">
                             <button
                                 onClick={(e) => increaseButtonClick(e, item)}
