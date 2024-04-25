@@ -5,7 +5,6 @@
   /* right: 25px; */
   top: -10px;
   right: 20px;
-  background-color: white;
   box-shadow: 2px 2px 2px gray;
   min-width: 150px;
   border-radius: 5px;
@@ -102,12 +101,16 @@
   cursor: pointer;
 }
 
+
+
 .shopping-cart-dropdown {
   position: fixed;
   color: rgb(83, 83, 83);
   top: -10px;
   right: 20px;
-  height: 95%;
+  max-height: 700px;
+  overflow-y: auto;
+  min-height: 95%;
   background-color: rgb(247, 244, 239);
   box-shadow: 2px 2px 2px gray;
   min-width: 150px;
