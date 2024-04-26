@@ -23,14 +23,10 @@ function ProductDetailPage() {
 
     const { cartItems, setCartItems } = useShoppingCart();
 
-
     const currentUser = useSelector(state => state.session.user)
-    // console.log("currentUser in component========>", currentUser)
     const productState = useSelector(state => state.product)
     const product = productState?.Products[productId]
-    // console.log("product in product detail component=======", product)
     const reviewArray = product?.reviews
-    // console.log("reviews in product detail component ========", reviewArray)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -97,11 +93,8 @@ function ProductDetailPage() {
     }
 
     const itemExistInCart = () => {
-        console.log("productId=======", productId)
-        console.log("cartItems======", cartItems)
         const numericProductId = Number(productId);// cover sting from param() to number
         const existingItem = cartItems?.find(item => item.productId === numericProductId);
-        console.log("existingItem======", existingItem)
         return existingItem ? existingItem.quantity : 0;
     }
 

@@ -5,7 +5,7 @@ import "./CheckoutItem.css"
 function CheckoutItem({item}) {
     const { cartItems, setCartItems } = useShoppingCart();
     const navigate = useNavigate();
-    console.log('cartItems=========', cartItems)
+    
 
     const increaseButtonClick = (e, targetItem) => {
         e.preventDefault();
@@ -23,8 +23,7 @@ function CheckoutItem({item}) {
     const decreaseButtonClick = (e, targetItem) => {
         e.preventDefault();
         const existingItem = cartItems.find(item => item.productId === targetItem.productId);
-        // console.log('targetItem========', targetItem)
-        // console.log('existingItem=======', existingItem)
+        
         
         if(existingItem) {
             if(existingItem.quantity === 1) {

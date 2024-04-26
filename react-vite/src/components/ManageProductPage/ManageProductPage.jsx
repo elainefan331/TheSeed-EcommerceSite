@@ -14,9 +14,7 @@ function ManageProductPage() {
     const navigate = useNavigate();
     const { setModalContent } = useModal();
     const productState = useSelector(state => state.product);
-    console.log("productState in component=======", productState)
     const products = Object.values(productState?.Products)
-    console.log("products in component==========", products)
     const currentUser = useSelector(state => state.session.user)
 
     useEffect(() => {

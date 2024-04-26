@@ -4,6 +4,15 @@
     display: grid;
     gap: 10px;
     color: rgb(83, 83, 83); 
+    width: 200px;
+    /* border: 2px red solid; */
+    padding: 5px 20px;
+}
+
+.signup-label-container {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
 }
 
 .signup-button {
@@ -16,38 +25,7 @@
     cursor: pointer;
 }
 
-.signup-email-input {
-    margin-left: 3px;
-    padding: 2px 54px;
-}
 
-.signup-username-input {
-    margin-top: 10px;
-    margin-left: 3px;
-    padding: 2px 40px;
-}
 
-.signup-password-input {
-    margin-top: 10px;
-    margin-left: 3px;
-    padding: 2px 40px;
-}
 
-.signup-confirm-password-input {
-    margin-top: 10px;
-    margin-left: 3px;
-    margin-bottom: 10px;
-    padding: 2px 13px;
-}
 
-.signup-first-name-input {
-    margin-top: 10px;
-    margin-left: 3px;
-    padding: 2px 35px;
-}
-
-.signup-last-name-input {
-    margin-top: 10px;
-    margin-left: 3px;
-    padding: 2px 35px;
-}

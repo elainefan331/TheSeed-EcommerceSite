@@ -46,7 +46,6 @@ export const getAllProductsThunk = () => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' }  
     });
     const data = await response.json();
-    console.log("products in thunk ==========>", data)
     dispatch(getAllProductsAction(data.products))
 }
 
@@ -57,7 +56,6 @@ export const getSingleProductThunk = (productId) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' }
     });
     const product = await response.json()
-    console.log("product in thunk ===============>", product)
     dispatch(getSingleProductAction(product))
 }
 

@@ -8,7 +8,7 @@ function BloomPage() {
     const dispatch = useDispatch();
     const productState = useSelector(state => state.product);
     const products = Object.values(productState?.Products);
-    console.log("products in component================>", products)
+    
 
     const bloomProducts = products?.filter(product => product.size === 'bloom')
 

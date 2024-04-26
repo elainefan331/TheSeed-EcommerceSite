@@ -11,7 +11,7 @@ function ShoppingCart() {
     const navigate = useNavigate();
 
     const { cartItems, setCartItems } = useShoppingCart();
-    // console.log('cartItems=========', cartItems)
+    
 
     const subtotal = cartItems.reduce((total, item) => {
         return total + (parseFloat(item.productPrice) * item.quantity);
@@ -59,8 +59,7 @@ function ShoppingCart() {
     const decreaseButtonClick = (e, targetItem) => {
         e.preventDefault();
         const existingItem = cartItems.find(item => item.productId === targetItem.productId);
-        // console.log('targetItem========', targetItem)
-        // console.log('existingItem=======', existingItem)
+        
         
         if(existingItem) {
             if(existingItem.quantity === 1) {
