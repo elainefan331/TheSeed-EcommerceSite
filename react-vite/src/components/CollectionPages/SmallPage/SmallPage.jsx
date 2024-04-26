@@ -9,7 +9,7 @@ function SmallPage() {
     const dispatch = useDispatch();
     const productState = useSelector(state => state.product);
     const products = Object.values(productState?.Products);
-    // console.log("products in component================>", products)
+    
 
     const smallProducts = products?.filter(product => product.size === 'Small')
 

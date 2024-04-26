@@ -13,9 +13,7 @@ function UpdateProductPage() {
     const { productId } = useParams();
 
     const productState = useSelector(state => state.product)
-    console.log("productState in component=========", productState)
     const product = productState?.Products[productId]
-    console.log("product in component============", product)
 
     const [name, setName] = useState(product?.name)
     const [description, setDescription] = useState(product?.description)

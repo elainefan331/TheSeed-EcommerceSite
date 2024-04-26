@@ -9,20 +9,8 @@ import "./UpdateReviewModal.css"
 function UpdateReviewModal({reviewId, reviewText, originRating, reviewUpdated}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    // const reviewState = useSelector(state => state.review)
-    // console.log("reviewState in component========", reviewState)
-    // const targetReview = reviewState[reviewId]
-    // console.log("review in component========", reviewText)
-
-    // const [review, setReview] = useState(targetReview?.review || "")
     const [review, setReview] = useState(reviewText)
-    // const [rating, setRating] = useState(targetReview?.rating)
     const [rating, setRating] = useState(originRating)
-
-
-    // useEffect(() => {
-    //     dispatch(getSingleReviewThunk(reviewId))
-    // }, [dispatch, reviewId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

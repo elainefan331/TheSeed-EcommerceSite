@@ -9,14 +9,12 @@ export default function ShoppingCartProvider({children}) {
     // const [cartItems, setCartItems] = useState([]);
     const currentUser = useSelector(state => state.session.user);
     const userId = currentUser?.id
-    console.log("userId=========", userId)
     // const localStorageKey = userId? `cartItems-${userId}` :'cartItems-guest';
 
     const [cartItems, setCartItems] = useState(() => {
         // const localData = localStorage.getItem(localStorageKey)
 
         const localData = localStorage.getItem('cartItems')
-        console.log("localData===============", localData)
         return localData? JSON.parse(localData) : [];
     });
 

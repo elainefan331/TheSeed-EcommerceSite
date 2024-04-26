@@ -68,81 +68,96 @@ function SignupFormModal() {
       {hasSubmitted && errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit} className="signup-form">
       <h1>Sign Up</h1>
-        <label>
-          Email
-          <input
-            className="signup-email-input"
+        <div className="signup-label-container">
+          <label>
+            Email
+          </label>
+            <input
+              className="signup-email-input"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <div>{hasSubmitted && errors.email && <p>{errors.email}</p>}</div>
+          {/* {errors.email && <p>{errors.email}</p>} */}
+        </div>
+
+        <div className="signup-label-container">
+          <label>
+            Username
+          </label>
+            <input
+              className="signup-username-input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <div>{hasSubmitted && errors.username && <p>{errors.username}</p>}</div>
+          {/* {errors.username && <p>{errors.username}</p>} */}
+        </div>
+
+        <div className="signup-label-container">
+          <label>
+            First Name
+          </label>
+            <input
+            className="signup-first-name-input"
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={first_name}
+            onChange={(e) => setFirst_Name(e.target.value)}
             required
-          />
-          <div>{hasSubmitted && errors.email && <p>{errors.email}</p>}</div>
-        </label>
-        {/* {errors.email && <p>{errors.email}</p>} */}
-        <label>
-          Username
-          <input
-            className="signup-username-input"
+            />
+            <div>{hasSubmitted && errors.first_name && <p>{errors.first_name}</p>}</div>
+          {/* {errors.first_name && <p>{errors.first_name}</p>} */}
+        </div>
+
+        <div className="signup-label-container">
+          <label>
+            Last Name
+          </label>
+            <input
+            className="signup-last-name-input"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={last_name}
+            onChange={(e) => setLast_Name(e.target.value)}
             required
-          />
-          <div>{hasSubmitted && errors.username && <p>{errors.username}</p>}</div>
-        </label>
-        {/* {errors.username && <p>{errors.username}</p>} */}
+            />
+            <div>{hasSubmitted && errors.last_name && <p>{errors.last_name}</p>}</div>
+          {/* {errors.last_name && <p>{errors.last_name}</p>} */}
+        </div>
 
-        <label>
-          First Name
-          <input
-          className="signup-first-name-input"
-          type="text"
-          value={first_name}
-          onChange={(e) => setFirst_Name(e.target.value)}
-          required
-          />
-          <div>{hasSubmitted && errors.first_name && <p>{errors.first_name}</p>}</div>
-        </label>
-        {/* {errors.first_name && <p>{errors.first_name}</p>} */}
+        <div className="signup-label-container">
+          <label>
+            Password
+          </label>
+            <input
+              className="signup-password-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <div>{hasSubmitted && errors.password && <p>{errors.password}</p>}</div>
+          {/* {errors.password && <p>{errors.password}</p>} */}
+        </div>
 
-        <label>
-          Last Name
-          <input
-          className="signup-last-name-input"
-          type="text"
-          value={last_name}
-          onChange={(e) => setLast_Name(e.target.value)}
-          required
-          />
-          <div>{hasSubmitted && errors.last_name && <p>{errors.last_name}</p>}</div>
-        </label>
-        {/* {errors.last_name && <p>{errors.last_name}</p>} */}
+        <div className="signup-label-container">
+          <label>
+            Confirm Password
+          </label>
+            <input
+              className="signup-confirm-password-input"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <div>{hasSubmitted && errors.confirmPassword && <p>{errors.confirmPassword}</p>}</div>
+          {/* {errors.confirmPassword && <p>{errors.confirmPassword}</p>} */}
 
-        <label>
-          Password
-          <input
-            className="signup-password-input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div>{hasSubmitted && errors.password && <p>{errors.password}</p>}</div>
-        </label>
-        {/* {errors.password && <p>{errors.password}</p>} */}
-        <label>
-          Confirm Password
-          <input
-            className="signup-confirm-password-input"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-          <div>{hasSubmitted && errors.confirmPassword && <p>{errors.confirmPassword}</p>}</div>
-        </label>
-        {/* {errors.confirmPassword && <p>{errors.confirmPassword}</p>} */}
+        </div>
         <button type="submit" className="signup-button">Sign Up</button>
       </form>
     </>

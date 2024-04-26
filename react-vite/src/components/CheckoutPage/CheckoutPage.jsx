@@ -9,7 +9,7 @@ function CheckoutPage() {
     const { cartItems, setCartItems } = useShoppingCart();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // console.log('cartItems=========', cartItems)
+    
 
     const subtotal = cartItems.reduce((total, item) => {
         return total + (parseFloat(item.productPrice) * item.quantity);

@@ -218,9 +218,10 @@
 .shopping-cart-product-name-img-container {
   display: flex;
   flex-direction: column;
-  max-width: 120px;
+  padding: 10px;
+  min-width: 200px;
   margin-bottom: 2vh;
-  /* border: 2px green solid; */
+  /* border: 2px red solid; */
 }
 
 @media (max-width:700px) {

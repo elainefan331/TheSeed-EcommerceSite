@@ -45,7 +45,6 @@ function CreateProductPage() {
             validationObj.image = "Image is required (accept pdf, png, jpg, jpeg, gif)"
         } else {
             const fileType = image.type
-            // console.log("file type=====================>", fileType)
             const validTypes = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'application/pdf']
             if (! validTypes.includes(fileType)) {
                 validationObj.imagetype = "Invalid file type, only PDF, PNG, JPG, JPEG, GIF are allowed" 

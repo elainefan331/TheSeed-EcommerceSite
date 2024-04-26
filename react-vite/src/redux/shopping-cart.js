@@ -32,7 +32,6 @@ export const checkoutThunk = (cartItems) => async (dispatch) => {
 
     if(response.ok) {
         const newCart = await response.json();
-        console.log("newCart==================", newCart)
         dispatch(createSingleCartAction(newCart));
     }
 
